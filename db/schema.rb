@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_195101) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_06_195533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "power_rankings", force: :cascade do |t|
+    t.integer "week", null: false
+    t.integer "year", default: 2000, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_power_rankings_on_user_id"
+    t.index ["week", "year", "user_id"], name: "power_rankings_index", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

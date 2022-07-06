@@ -1,0 +1,2 @@
+class PowerRanking < ApplicationRecord
+end

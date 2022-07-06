@@ -1,0 +1,17 @@
+<div id="<%= dom_id power_ranking %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Week:</strong>
+    <%= power_ranking.week %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Year:</strong>
+    <%= power_ranking.year %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this power ranking", power_ranking, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this power ranking', edit_power_ranking_path(power_ranking), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
