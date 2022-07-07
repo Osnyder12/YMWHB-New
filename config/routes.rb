@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   resources :power_rankings
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/sign_in', to:'sessions#new', as: 'sign_in'
+  post '/sign_in', to: 'sessions#create'
+  get '/sign_up', to: 'sessions#sign_up'
+  post '/sign_up', to: 'sessions#register'
+  delete '/sign_out', to: 'sessions#destroy', as: 'sign_out'
 end
