@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create, :sign_up, :register]
+  # skip_before_action :authorize, only: [:new, :create, :sign_up, :register]
+  protect_from_forgery with: :null_session
 
   def new
     return unless current_user
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
 
-    if user&.authenticate
+    if user&.authenticate(params[:password])
       session[:user_id] = user.id.to_s
       redir_path = session[:return_to].blank? ? root_path : session[:return_to]
       session[:return_to] = nil
@@ -31,7 +32,9 @@ class SessionsController < ApplicationController
 
   # POST /sign_up
   def register
-    user = User.new(email: params[:email], password: params[:password])
+    user = User.new(email: params[:email])
+
+    user.password = params[:password]
 
     if user.save
       session[:user_id] = user.id.to_s

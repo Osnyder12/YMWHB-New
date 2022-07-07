@@ -1,10 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+  has_secure_password :recovery_password, validations: false
 
-  def password_digest=(val)
-    self.encrypted_password = val
-  end
-
-  def password_digest
-    encrypted_password
-  end
+  attr_accessor :password_digest, :recovery_password_digest
 end
