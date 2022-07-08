@@ -31,10 +31,9 @@ class SessionsController < ApplicationController
 
   # POST /sign_up
   def register
-    user = User.new(email: params[:email])
+    user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password])
 
     user.password = params[:password]
-    user.password_confirmation = params[:password]
 
     if user.save
       session[:user_id] = user.id
