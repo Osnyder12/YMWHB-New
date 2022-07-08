@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_213310) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_08_160424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_213310) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_power_rankings_on_user_id"
     t.index ["week", "year", "user_id"], name: "power_rankings_index", unique: true
+  end
+
+  create_table "rankings", force: :cascade do |t|
+    t.integer "rank_number"
+    t.string "description"
+    t.string "rankable_type", null: false
+    t.bigint "rankable_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "team_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rankable_type", "rankable_id"], name: "index_rankings_on_rankable"
+    t.index ["team_id", "rankable_id", "rankable_type"], name: "rankings_index", unique: true
+    t.index ["user_id"], name: "index_rankings_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "team_name", null: false
+    t.string "team_owner", null: false
+    t.bigint "user_id", null: false
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
