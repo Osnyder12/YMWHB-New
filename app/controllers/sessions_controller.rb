@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  # skip_before_action :authorize, only: [:new, :create, :sign_up, :register]
-  protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
 
   def new
     return unless current_user
@@ -35,12 +34,12 @@ class SessionsController < ApplicationController
     user = User.new(email: params[:email])
 
     user.password = params[:password]
+    user.password_confirmation = params[:password]
 
     if user.save
-      session[:user_id] = user.id.to_s
-      redir_path = session[:return_to].blank? ? root_path : session[:return_to]
-      session[:return_to] = nil
-      redirect_to redir_path, notice: 'Successfully created account!'
+      session[:user_id] = user.id
+
+      redirect_to root_path, notice: 'Successfully created account!'
     else
       redirect_back fallback_location: { action: :new },
                     alert: 'Email or password did not work.'
