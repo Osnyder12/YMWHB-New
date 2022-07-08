@@ -23,6 +23,8 @@ class PowerRankingsController < ApplicationController
   def create
     @power_ranking = PowerRanking.new(power_ranking_params)
 
+    @power_ranking.user_id = current_user.id
+
     respond_to do |format|
       if @power_ranking.save
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully created." }
