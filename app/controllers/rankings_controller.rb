@@ -65,9 +65,8 @@ class RankingsController < ApplicationController
     end
   end
 
-  def move
-    @ranking.insert_at(params[:position].to_i)
-    head :ok
+  def drag
+    
   end
 
 

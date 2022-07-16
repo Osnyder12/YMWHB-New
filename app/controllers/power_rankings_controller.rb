@@ -1,5 +1,6 @@
 class PowerRankingsController < ApplicationController
   before_action :set_power_ranking, only: %i[ show edit update destroy ]
+  before_action :set_rankings, only: %i[ edit show ]
 
   # GET /power_rankings or /power_rankings.json
   def index
@@ -7,9 +8,7 @@ class PowerRankingsController < ApplicationController
   end
 
   # GET /power_rankings/1 or /power_rankings/1.json
-  def show
-    @rankings = @power_ranking.rankings.order(:position)
-  end
+  def show; end
 
   # GET /power_rankings/new
   def new
@@ -17,8 +16,7 @@ class PowerRankingsController < ApplicationController
   end
 
   # GET /power_rankings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /power_rankings or /power_rankings.json
   def create
@@ -70,6 +68,10 @@ class PowerRankingsController < ApplicationController
     @power_rankings = PowerRanking.where(year: @year).order(:week)
   end
 
+  def drag
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_power_ranking
@@ -79,5 +81,9 @@ class PowerRankingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def power_ranking_params
       params.require(:power_ranking).permit(:week, :year)
+    end
+
+    def set_rankings
+      @rankings = @power_ranking.rankings.order(:position)
     end
 end
