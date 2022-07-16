@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :power_rankings, except: [:index] do
     resources :rankings do
       member do
-        patch :move
+        patch :drag
       end
     end
   end

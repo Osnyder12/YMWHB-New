@@ -66,7 +66,7 @@ class RankingsController < ApplicationController
   end
 
   def drag
-    
+    binding.pry
   end
 
 
@@ -78,7 +78,7 @@ class RankingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ranking_params
-      params.require(:ranking).permit(:rank_number, :description, :team_id, :position, :power_ranking_id, :avatar)
+      params.require(:ranking).permit(:id, :rank_number, :description, :team_id, :position, :power_ranking_id, :avatar)
     end
 
     def set_power_ranking

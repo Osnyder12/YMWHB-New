@@ -1,8 +1,4 @@
-<% dragActions = "dragstart->drag#dragStart
-                  dragover->drag#dragOver
-                  dragenter->drag#dragEnter
-                  drop->drag#drop
-                  dragend->drag#dragEnd" %>
+<% dragActions = "dragstart->drag#dragStart dragover->drag#dragOver dragenter->drag#dragEnter drop->drag#drop dragend->drag#dragEnd" %>
 
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">Editing power ranking</h1>
@@ -12,36 +8,30 @@
   <%= link_to 'Add New Ranking', new_power_ranking_ranking_path(@power_ranking), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to power rankings", power_rankings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-  <div class=" mx-auto w-full">
+  <div class=" mx-auto w-full" id="rankings">
     <h2 class="font-bold text-xl mb-6 pb-2 border-b-2">
       Rankings
     </h2>
-    <div id="rankings">
+    <div>
       <ul>
-        <% cache @rankings do %>
-          <% @rankings.each do |ranking| %>
-            <% cache ranking do %>
-              <%= content_tag(:div, class: 'bi bi-grip-vertical draggable', draggable: true, data: {
-                controller: "drag",
-                action: dragActions,
-                resource_id: ranking.id,
-                url: "/rankings/drag",
-                parent: "rankings"
-              }) do %>
-                <div>
-                  <li class="flex mb-6">
-                    <%= image_tag ranking.avatar.url,
-                      class: 'object-contain w-40 h-48 shadow mr-6' %>
-                    <div>
-                      <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
-                      <p>
-                        <%= sanitize(ranking.description) %>
-                      </p>
-                    </div>
-                  </li>
-                </div>
-              <% end %>
-            <% end %>
+        <% @rankings.each do |ranking| %>
+            <%= content_tag(:div, class: 'bi bi-grip-vertical draggable', draggable: true, data: {
+              controller: "drag",
+              action: "dragstart->drag#dragStart dragover->drag#dragOver dragenter->drag#dragEnter drop->drag#drop dragend->drag#dragEnd",
+              resource_id: ranking.id,
+              url: "/rankings/drag",
+              parent: "rankings",
+            }) do %>
+                <li class="flex mb-6">
+                  <%= image_tag ranking.avatar.url,
+                    class: 'object-contain w-40 h-48 shadow mr-6' %>
+                  <div>
+                    <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
+                    <p>
+                      <%= sanitize(ranking.description) %>
+                    </p>
+                  </div>
+                </li>
           <% end %>
         <% end %>
       </ul>
