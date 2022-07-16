@@ -1,0 +1,10 @@
+<div class="w-5/6 bg-white items-center justify-center rounded-lg">
+  <ul class="divide-y-2 items-center justify-center divide-gray-400">
+    <% @power_rankings.each do |pr| %>
+      <li class="flex text-lg items-center justify-between p-3">
+          Week <%= pr.week %>
+          <%= link_to 'View Power Rankings', "/power_rankings/#{pr.id}", class: "rounded-md py-3 px-5 bg-yellow-500 text-sm hover:bg-yellow-600 text-white block font-medium" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

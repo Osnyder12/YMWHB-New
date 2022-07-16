@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_08_160424) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_120649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_160424) do
     t.string "description"
     t.string "rankable_type", null: false
     t.bigint "rankable_id", null: false
-    t.bigint "user_id", null: false
-    t.integer "team_id", null: false
+    t.bigint "user_id"
+    t.integer "team_id"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,10 +40,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_160424) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "team_name", null: false
-    t.string "team_owner", null: false
-    t.bigint "user_id", null: false
+    t.string "team_name"
+    t.string "team_owner"
     t.string "image"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teams_on_user_id"
@@ -57,4 +57,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_160424) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "teams", "users"
 end

@@ -3,11 +3,12 @@ class PowerRankingsController < ApplicationController
 
   # GET /power_rankings or /power_rankings.json
   def index
-    @power_rankings = PowerRanking.all
+    @power_rankings = PowerRanking.all.order(week: :desc)
   end
 
   # GET /power_rankings/1 or /power_rankings/1.json
   def show
+    @rankings = @power_ranking.rankings.order(position: :desc)
   end
 
   # GET /power_rankings/new
@@ -57,6 +58,16 @@ class PowerRankingsController < ApplicationController
       format.html { redirect_to power_rankings_url, notice: "Power ranking was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def years
+    @power_ranking_years = PowerRanking.pluck(:year).uniq.sort
+  end
+
+  def weeks
+    @year = params[:year]
+
+    @power_rankings = PowerRanking.where(year: @year).order(:week)
   end
 
   private
