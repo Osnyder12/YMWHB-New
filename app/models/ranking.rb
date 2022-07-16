@@ -3,5 +3,5 @@ class Ranking < ApplicationRecord
   # acts_as_list
   belongs_to :user
   belongs_to :team
-  # has_one_attached :avatar
+  mount_uploader :avatar, AvatarUploader
 end

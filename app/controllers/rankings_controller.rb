@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class RankingsController < ApplicationController
   before_action :set_ranking, only: %i[ show edit update destroy ]
   before_action :set_power_ranking, except: :move
@@ -27,7 +29,7 @@ class RankingsController < ApplicationController
     @ranking.user = current_user
     @ranking.rankable = @power_ranking
     @ranking.position = @power_ranking.rankings.length + 1
-
+    @ranking.avatar = params[:ranking][:avatar].original_filename
 
     respond_to do |format|
       if @ranking.save
@@ -77,7 +79,7 @@ class RankingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ranking_params
-      params.require(:ranking).permit(:rank_number, :description, :team_id, :position, :power_ranking_id)
+      params.require(:ranking).permit(:rank_number, :description, :team_id, :position, :power_ranking_id, :avatar)
     end
 
     def set_power_ranking

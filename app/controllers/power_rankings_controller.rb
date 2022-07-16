@@ -8,7 +8,7 @@ class PowerRankingsController < ApplicationController
 
   # GET /power_rankings/1 or /power_rankings/1.json
   def show
-    @rankings = @power_ranking.rankings.order(position: :desc)
+    @rankings = @power_ranking.rankings.order(:position)
   end
 
   # GET /power_rankings/new
