@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 # Image Storage
 gem 'carrierwave', '~> 2.0'
 
+# Ranking Sorting
+gem 'acts_as_list'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
