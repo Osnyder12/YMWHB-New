@@ -2,7 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class RankingsController < ApplicationController
   before_action :set_ranking, only: %i[ show edit update destroy ]
-  before_action :set_power_ranking, except: :move
+  before_action :set_power_ranking, except: :drag
 
   # GET /rankings or /rankings.json
   def index
@@ -66,7 +66,10 @@ class RankingsController < ApplicationController
   end
 
   def drag
-    binding.pry
+    ranking = Ranking.find_by(id: params[:ranking][:id])
+
+    ranking.insert_at(params[:ranking][:position].to_i)
+    head :ok
   end
 
 
