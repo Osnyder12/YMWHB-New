@@ -8,34 +8,36 @@
   <%= link_to 'Add New Ranking', new_power_ranking_ranking_path(@power_ranking), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to power rankings", power_rankings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-  <div class=" mx-auto w-full" id="rankings">
+  <div class=" mx-auto w-full">
     <h2 class="font-bold text-xl mb-6 pb-2 border-b-2">
       Rankings
     </h2>
-    <div>
-      <ul>
+    <ul>
+        <div id="rankings">
         <% @rankings.each do |ranking| %>
             <%= content_tag(:div, class: 'bi bi-grip-vertical draggable', draggable: true, data: {
               controller: "drag",
-              action: "dragstart->drag#dragStart dragover->drag#dragOver dragenter->drag#dragEnter drop->drag#drop dragend->drag#dragEnd",
+              action: dragActions,
               resource_id: ranking.id,
-              url: "/rankings/drag",
+              url: "/power_rankings/@power_ranking.id/rankings/ranking.id/drag",
               parent: "rankings",
             }) do %>
-                <li class="flex mb-6">
-                  <%= image_tag ranking.avatar.url,
-                    class: 'object-contain w-40 h-48 shadow mr-6' %>
-                  <div>
-                    <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
-                    <p>
-                      <%= sanitize(ranking.description) %>
-                    </p>
-                  </div>
-                </li>
+            <div id="<%= dom_id ranking %>">
+              <li class="flex mb-6 border-b border-yellow-500">
+                <%= image_tag ranking.avatar.url,
+                  class: 'object-contain w-40 h-48 shadow mr-6' %>
+                <div>
+                  <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
+                  <p>
+                    <%= sanitize(ranking.description) %>
+                  </p>
+                </div>
+              </li>
+            </div>
           <% end %>
         <% end %>
+      </div>
       </ul>
-    </div>
   </div>
 </div>
 

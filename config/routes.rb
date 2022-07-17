@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   get '/power_rankings/:year/weeks', to: 'power_rankings#weeks'
 
   resources :power_rankings, except: [:index] do
+    resources :rankings
     resources :rankings do
       member do
         patch :drag
       end
     end
   end
+
+  # patch 'drag/drag'
 
   # Sessions
   get '/sign_in', to:'sessions#new', as: 'sign_in'

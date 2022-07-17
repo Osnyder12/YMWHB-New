@@ -31,7 +31,6 @@ export default class extends Controller {
    * @param {*} event The drag event, which can be used to access the dragged element.
    */
   dragStart(event) {
-    debugger;
     resourceID = event.target.getAttribute(dataResourceID);
     url = event.target.getAttribute("data-url");
     event.dataTransfer.effectAllowed = "move";
