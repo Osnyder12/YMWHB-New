@@ -29,7 +29,7 @@ class RankingsController < ApplicationController
     @ranking.user = current_user
     @ranking.rankable = @power_ranking
     @ranking.position = @power_ranking.rankings.length + 1
-    @ranking.avatar = params[:ranking][:avatar].original_filename
+    @ranking.avatar = params[:ranking][:avatar].original_filename if params[:ranking][:avatar]
 
     respond_to do |format|
       if @ranking.save
@@ -68,7 +68,10 @@ class RankingsController < ApplicationController
   def drag
     ranking = Ranking.find_by(id: params[:ranking][:id])
 
-    ranking.insert_at(params[:ranking][:position].to_i)
+    new_position = params[:ranking][:position].to_i + 1
+
+    ranking.insert_at(new_position)
+
     head :ok
   end
 

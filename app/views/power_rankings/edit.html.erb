@@ -24,8 +24,10 @@
             }) do %>
             <div id="<%= dom_id ranking %>">
               <li class="flex mb-6 border-b border-yellow-500">
+                <% if ranking.avatar.present? %>
                 <%= image_tag ranking.avatar.url,
                   class: 'object-contain w-40 h-48 shadow mr-6' %>
+                  <% end %>
                 <div>
                   <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
                   <p>

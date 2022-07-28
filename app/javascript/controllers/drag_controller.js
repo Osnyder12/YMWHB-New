@@ -52,6 +52,7 @@ export default class extends Controller {
       return true;
     }
     this.setNewPosition(dropTarget, draggedItem, event);
+
     newPosition = [...this.element.parentElement.children].indexOf(draggedItem);
   }
   /**
@@ -131,6 +132,7 @@ export default class extends Controller {
    */
   setNewPosition(dropTarget, draggedItem) {
     const positionComparison = dropTarget.compareDocumentPosition(draggedItem);
+
     if (positionComparison & Node.DOCUMENT_POSITION_FOLLOWING) {
       dropTarget.insertAdjacentElement("beforebegin", draggedItem);
     } else if (positionComparison & Node.DOCUMENT_POSITION_PRECEDING) {
