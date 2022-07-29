@@ -53,7 +53,7 @@ class PowerRankingsController < ApplicationController
     @power_ranking.destroy
 
     respond_to do |format|
-      format.html { redirect_to power_rankings_url, notice: "Power ranking was successfully destroyed." }
+      format.html { redirect_to '/', notice: "Power ranking was successfully destroyed." }
       format.json { head :no_content }
     end
   end

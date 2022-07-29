@@ -66,7 +66,7 @@ class RankingsController < ApplicationController
     @ranking.destroy
 
     respond_to do |format|
-      format.html { redirect_to rankings_url, notice: "Ranking was successfully destroyed." }
+      format.html { redirect_to edit_power_ranking_path(@power_ranking), notice: "Ranking was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -85,6 +85,7 @@ class RankingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking
+      binding.pry
       @ranking = Ranking.find(params[:id])
     end
 
