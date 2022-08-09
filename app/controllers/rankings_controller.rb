@@ -85,7 +85,6 @@ class RankingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking
-      binding.pry
       @ranking = Ranking.find(params[:id])
     end
 

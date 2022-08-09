@@ -3,6 +3,5 @@
 
   <%= render "form", ranking: @ranking %>
 
-  <%= link_to "Show this ranking", @ranking, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to rankings", rankings_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to Power Ranking", edit_power_ranking_path(@power_ranking.id), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
