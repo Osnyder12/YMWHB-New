@@ -8,12 +8,14 @@
     Week 1 Power Rankings
   </h1>
 
-  <div class="items-center">
-    <%= link_to 'Edit this Power Ranking', edit_power_ranking_path(@power_ranking), class: "mt-2 mb-10 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Delete this Power Ranking', power_ranking_path(@power_ranking), method: :delete, class: "mt-2 mb-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <% if @current_user.role == 'admin' %>
+    <div class="items-center">
+      <%= link_to 'Edit this Power Ranking', edit_power_ranking_path(@power_ranking), class: "mt-2 mb-10 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Delete this Power Ranking', power_ranking_path(@power_ranking), method: :delete, class: "mt-2 mb-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
     </div>
-  </div>
+  <% end %>
   
   <ul>
     <% @rankings.each do |ranking| %>

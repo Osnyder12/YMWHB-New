@@ -16,7 +16,7 @@
   </p>
   <% end %>
 
-  <% if action_name != "show" %>
+  <% if action_name != "show" && @current_user.role == 'admin' %>
     <%= link_to "Show this team", team, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this team', edit_team_path(team), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
