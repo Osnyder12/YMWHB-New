@@ -14,8 +14,8 @@
   <div class="inline">
     <%= form.submit value: 'Save', class: "rounded-lg mt-5 py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
-
-  <% unless params['action'] = 'edit' %>
+<% binding.pry %>
+  <% if params['action'] == 'new' %>
     <div class="grid grid-cols-2 gap-1 content-center">
       <div class="my-5 w-1">
         <%= form.label :week %>
