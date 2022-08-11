@@ -20,12 +20,12 @@
 
   <div class="my-5">
     <%= form.label :description %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_area :description, class: "block p-2.5 w-full text-black text-sm bg-white-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
   </div>
 
   <div class="my-5">
     <%= form.label :avatar %>
-    <%= form.file_field :avatar, class: "outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :avatar, class: "ml-0 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

@@ -52,7 +52,7 @@ class RankingsController < ApplicationController
   def update
     respond_to do |format|
       if @ranking.update(ranking_params)
-        format.html { redirect_to ranking_url(@ranking), notice: "Ranking was successfully updated." }
+        format.html { redirect_to power_ranking_url(@power_ranking), notice: "Ranking was successfully updated." }
         format.json { render :show, status: :ok, location: @ranking }
       else
         format.html { render :edit, status: :unprocessable_entity }
