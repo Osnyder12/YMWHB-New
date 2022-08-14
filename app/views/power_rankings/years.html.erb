@@ -1,9 +1,9 @@
-<div class="w-5/6 bg-white items-center justify-center rounded-lg">
-  <ul class="divide-y-2 items-center justify-center divide-gray-400">
+<div class="w-full items-center justify-center rounded-lg">
+  <ul class="grid grid-cols-4">
     <% @power_ranking_years.each do |pr_year| %>
-      <li class="flex text-lg items-center justify-between p-3">
-          <%= pr_year %>
-          <%= link_to 'View Power Rankings', "/power_rankings/#{pr_year}/weeks", class: "rounded-md py-3 px-5 bg-yellow-500 text-sm hover:bg-yellow-600 text-white block font-medium" %>
+      <li class="col-span-1 h-2000">
+          <%= link_to "/power_rankings/#{pr_year}/weeks" do %>
+          <% end %>
       </li>
     <% end %>
   </ul>
