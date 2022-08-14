@@ -1,10 +1,14 @@
-<div class="w-5/6 bg-white items-center justify-center rounded-lg">
-  <ul class="divide-y-2 items-center justify-center divide-gray-400">
+<div class="p-10">
+  <ul class="rounded overflow-hidden grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @power_rankings.each do |pr| %>
-      <li class="flex text-lg items-center justify-between p-3">
-          Week <%= pr.week %>
-          <%= link_to 'View Power Rankings', "/power_rankings/#{pr.id}", class: "rounded-md py-3 px-5 bg-yellow-500 text-sm hover:bg-yellow-600 text-white block font-medium" %>
-      </li>
+      <%= link_to "/power_rankings/#{pr.id}" do %>
+        <li class="rounded overflow-hidden shadow-lg mb-3">
+          <%= image_tag('burrow.png', size: "200x300", class: 'w-full') %>
+          <div class="px-6 py-4">
+            <div class="text-xl mb-2">Week: <%= pr.week %></div>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
