@@ -23,6 +23,13 @@ class PowerRankingsController < ApplicationController
     @power_ranking = PowerRanking.new(power_ranking_params)
 
     @power_ranking.user_id = current_user.id
+    avatar_file = params[:power_ranking][:avatar]&.original_filename
+
+    if avatar_file.match(/\s/).present?
+      avatar_file = avatar_file.gsub(" ", "_")
+    end
+
+    @power_ranking.avatar = avatar_file
 
     respond_to do |format|
       if @power_ranking.save
@@ -76,7 +83,7 @@ class PowerRankingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def power_ranking_params
-      params.require(:power_ranking).permit(:week, :year)
+      params.require(:power_ranking).permit(:week, :year, :avatar)
     end
 
     def set_rankings
