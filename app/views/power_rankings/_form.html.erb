@@ -1,4 +1,4 @@
-<%= form_with(model: power_ranking, class: "contents") do |form| %>
+<%= form_with(model: power_ranking, class: "contents w-full max-w-lg") do |form| %>
   <% if power_ranking.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(power_ranking.errors.count, "error") %> prohibited this power_ranking from being saved:</h2>
@@ -11,20 +11,28 @@
     </div>
   <% end %>
 
-  <div class="inline">
-    <%= form.submit value: 'Save', class: "rounded-lg mt-5 py-3 px-5 bg-green-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
-  <% if params['action'] == 'new' %>
-    <div class="grid grid-cols-2 gap-1 content-center">
-      <div class="my-5 w-1">
-        <%= form.label :week %>
-        <%= form.number_field :week, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <% if params['action'] == 'new' %>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <%= form.label :week, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= form.number_field :week, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
       </div>
     
-      <div class="my-5 w-1">
-        <%= form.label :year %>
-        <%= form.number_field :year, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= form.number_field :year, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
       </div>
-    </div>
-  <% end %>
+
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <%= form.label :avatar, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= form.file_field :avatar, class: "" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <button type="submit" class="grid justify-items-center w-1/4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+      Save
+    </button>
+  </div>
 <% end %>
