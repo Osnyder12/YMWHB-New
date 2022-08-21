@@ -1,9 +1,9 @@
 <div class="p-10">
-  <ul class="rounded overflow-hidden grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
+  <ul class="rounded grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @power_rankings.each do |pr| %>
       <%= link_to "/power_rankings/#{pr.id}" do %>
-        <li class="rounded overflow-hidden shadow-lg mb-3">
-          <%= image_tag pr_avatar(power_ranking: pr), class: 'w-full' %>
+        <li class="rounded shadow-lg mb-3">
+          <%= image_tag pr_avatar(power_ranking: pr), class: 'object-bottom' %>
           <div class="px-6 py-4">
             <div class="text-xl mb-2">Week: <%= pr.week %></div>
           </div>
