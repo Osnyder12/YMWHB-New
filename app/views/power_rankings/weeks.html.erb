@@ -1,14 +1,14 @@
 <div class="p-10">
   <ul class="aspect-auto rounded grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
     <% @power_rankings.each do |pr| %>
-      <%= link_to "/power_rankings/#{pr.id}" do %>
-        <li class="aspect-auto rounded shadow-lg mb-3">
+      <li class="aspect-auto rounded shadow-lg mb-3">
+        <%= link_to "/power_rankings/#{pr.id}" do %>
           <%= image_tag pr_avatar(power_ranking: pr), class: 'object-scale-down' %>
           <div class="px-6 py-4">
             <div class="text-xl mb-2">Week: <%= pr.week %></div>
           </div>
-        </li>
-      <% end %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 </div>
