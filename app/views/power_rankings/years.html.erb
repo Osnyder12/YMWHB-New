@@ -1,14 +1,12 @@
-<div class="p-10">
-  <ul class="rounded overflow-hidden grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
-    <% @power_ranking_years.each do |pr_year| %>
-      <%= link_to "/power_rankings/#{pr_year}/weeks" do %>
-        <li class="rounded overflow-hidden shadow-lg mb-3">
-          <%= image_tag('burrow.png', size: "200x300", class: 'w-full') %>
-          <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">2022</div>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+<div class="grid grid-cols-6 rounded-r-md">
+  <% @power_ranking_years.each do |pr_year| %>
+  <div class="col-start-1 col-end-3 max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
+        <%= link_to "/power_rankings/#{pr_year}/weeks" do %>
+        <%= image_tag('burrow.png', class: 'rounded-t-lg m-auto') %>
+        <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-500 dark:text-yellow-500 mb-5">2022</h5>
+        </div>
+        <% end %>
+      </div>
+  <% end %>
 </div>

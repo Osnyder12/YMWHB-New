@@ -1,14 +1,12 @@
-<div class="p-10">
-  <ul class="rounded grid grid-cols-4 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-5">
-    <% @power_rankings.each do |pr| %>
-      <li class="rounded shadow-lg mb-3">
-        <%= link_to "/power_rankings/#{pr.id}" do %>
-          <div class="aspect-square">
-            <%= image_tag pr.pr_avatar, class: 'object-fill' %>
-          </div>
-          <div class="text-xl px-6 py-4">Week: <%= pr.week %></div>
-        <% end %>
-      </li>
+<div class="grid grid-cols-6 rounded-r-md">
+  <% @power_rankings.each_with_index do |pr, index| %>
+  <div class="<%= weeks_column(index: index) %> max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
+    <%= link_to "/power_rankings/#{pr.id}" do %>
+        <%= image_tag(pr.pr_avatar, class: 'm-auto') %>
+        <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-500 dark:text-yellow-500 mb-5">Week: <%= pr.week %></h5>
+        </div>
     <% end %>
-  </ul>
+  </div>
+  <% end %>
 </div>
