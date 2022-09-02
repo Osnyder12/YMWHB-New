@@ -10,8 +10,21 @@
     </div>
   </div>
   
-  
   <div class="grid grid-cols-6 rounded-r-md">
+    <% if @power_ranking.present? && @power_ranking.has_rankings?%>
+    <div class="col-span-1 m-auto">
+      <div class="col-start-1 col-end-3">
+        <%= image_tag(@power_ranking.pr_avatar, size: "500x500", class: 'object-contain rounded-md') %>
+      </div>
+  
+      <div class="col-end-7 col-span-3">
+        <div class="align-middle h-100">
+          <h3 class="font-bold font-serif text-center content-center text-2xl">Week <%= @power_ranking.week %> Power Rankings</h3>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
     <div class="col-start-1 col-end-3">
       <%= image_tag('OrkinPestControl.png', size: "500x500", class: 'object-contain rounded-md') %>
     </div>

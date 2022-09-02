@@ -4,7 +4,7 @@
       <li class="rounded shadow-lg mb-3">
         <%= link_to "/power_rankings/#{pr.id}" do %>
           <div class="aspect-square">
-            <%= image_tag pr_avatar(power_ranking: pr), class: 'object-fill' %>
+            <%= image_tag pr.pr_avatar, class: 'object-fill' %>
           </div>
           <div class="text-xl px-6 py-4">Week: <%= pr.week %></div>
         <% end %>
