@@ -12,7 +12,7 @@
   
   <div class="grid grid-cols-6 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-start-1 col-end-3 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-md dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-start-1 col-end-3 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-500 dark:text-yellow-500 mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
@@ -24,7 +24,7 @@
     </div>
     <% end %>
 
-    <div class="col-start-3 col-end-5 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-md dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-start-3 col-end-5 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-yellow-500 dark:text-yellow-500 mb-5">2021 Champion Orkins Pest Control</h5>
