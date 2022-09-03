@@ -2,23 +2,18 @@ class PowerRankingsController < ApplicationController
   before_action :set_power_ranking, only: %i[ show edit update destroy ]
   before_action :set_rankings, only: %i[ edit show ]
 
-  # GET /power_rankings or /power_rankings.json
   def index
     @power_rankings = PowerRanking.all.order(week: :desc)
   end
 
-  # GET /power_rankings/1 or /power_rankings/1.json
   def show; end
 
-  # GET /power_rankings/new
   def new
     @power_ranking = PowerRanking.new
   end
 
-  # GET /power_rankings/1/edit
   def edit; end
 
-  # POST /power_rankings or /power_rankings.json
   def create
     @power_ranking = PowerRanking.new(power_ranking_params)
 
@@ -43,7 +38,6 @@ class PowerRankingsController < ApplicationController
   end
 
   def update
-    binding.pry
     respond_to do |format|
       if @power_ranking.update(power_ranking_params)
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully updated." }
@@ -55,7 +49,6 @@ class PowerRankingsController < ApplicationController
     end
   end
 
-  # DELETE /power_rankings/1 or /power_rankings/1.json
   def destroy
     @power_ranking.destroy
 
@@ -80,7 +73,7 @@ class PowerRankingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_power_ranking
       @power_ranking = PowerRanking.find(params[:id])
     end
