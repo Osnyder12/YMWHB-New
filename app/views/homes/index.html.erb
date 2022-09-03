@@ -10,52 +10,50 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-6 rounded-r-md">
+  <div class="grid grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="mb-5 col-start-1 col-end-3 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="mb-5 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
-          <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              Read more
+          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
+          <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+              Read
               <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
           </a>
       </div>
     </div>
     <% end %>
 
-    <div class="col-start-3 col-end-5 max-w-sm bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">2021 Champion Orkins Pest Control</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
+          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">2021 Champion</h6>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
       </div>
     </div>
   </div>
 
-    <div class="grid grid-cols-6 rounded-r-md">
-      <% cache @last_year_power_ranking do %>
-          <% if @last_year_power_ranking.present? && @last_year_power_ranking.has_rankings? %>
-          <div class="col-start-1 col-end-3 mt-10">
-            <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="flex flex-col items-center bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
-              <%= image_tag(@last_year_power_ranking.pr_avatar, class: 'object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg') %>
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black"><%= @last_year %> Power Rankings</h5>
-                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Revisit last years power rankings</p>
-              </div>
-            </a>
-          </div>
-        <% end %>
+  <div class="grid grid-cols-2 rounded-r-md mb-10">
+    <% cache @last_year_power_ranking do %>
+        <% if @last_year_power_ranking.present? && @last_year_power_ranking.has_rankings? %>
+          <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="flex flex-col mt-10 items-center w-full bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
+            <%= image_tag(@last_year_power_ranking.pr_avatar, class: 'object-cover w-full h-full rounded-t-lg md:w-48 md:rounded-none md:rounded-l-lg') %>
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black"><%= @last_year %> Power Rankings</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Revisit last years power rankings</p>
+            </div>
+          </a>
       <% end %>
-  
-      <div class="col-start-3 col-end-5 mt-10">
-        <a href="/ymwhb/history" class= "flex flex-col items-center bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
-          <%= image_tag('trophy.png', class: 'object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg') %>
-          <div class="flex flex-col justify-between p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black">Past Champions</h5>
-          </div>
-        </a>
+    <% end %>
+
+    <a href="/ymwhb/history" class= "flex flex-col mt-10 items-center bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
+      <%= image_tag('trophy.png', class: 'object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg') %>
+      <div class="flex flex-col justify-between p-4 leading-normal">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black">Past Champions</h5>
       </div>
-    </div>
+    </a>
+  </div>
 </div>
 
