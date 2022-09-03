@@ -23,7 +23,7 @@ class PowerRankingsController < ApplicationController
     @power_ranking = PowerRanking.new(power_ranking_params)
 
     @power_ranking.user_id = current_user.id
-    avatar_file = params[:power_ranking][:avatar]&.original_filename
+    avatar_file = params[:avatar]&.original_filename
 
     if avatar_file.match(/\s/).present?
       avatar_file = avatar_file.gsub(" ", "_")
@@ -42,8 +42,8 @@ class PowerRankingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /power_rankings/1 or /power_rankings/1.json
   def update
+    binding.pry
     respond_to do |format|
       if @power_ranking.update(power_ranking_params)
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully updated." }
@@ -85,9 +85,8 @@ class PowerRankingsController < ApplicationController
       @power_ranking = PowerRanking.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def power_ranking_params
-      params.require(:power_ranking).permit(:week, :year, :avatar)
+      params.permit(:id, :week, :year, :avatar)
     end
 
     def set_rankings

@@ -16,23 +16,17 @@
       </div>
     </div>
   <% end %>
-  
-  <ul>
+
+  <div class="grid grid-cols-1 rounded-r-md mb-10 w-full">
     <% @rankings.each do |ranking| %>
-      <% cache ranking do %>
-        <li class="flex mb-6">
+        <div class="flex flex-col mt-10 w-full items-center bg-slate-100 rounded-lg border shadow-md md:flex-row dark:border-slate-200 dark:bg-slate-100">
           <% if ranking.avatar.url.present? %>
-            <%= image_tag ranking.avatar.url,
-                class: 'object-contain w-40 h-48 shadow mr-6' %>
+            <%= image_tag(ranking.avatar.url, class: 'object-cover w-full h-full rounded-t-lg md:w-48 md:rounded-none md:rounded-l-lg') %>
           <% end %>
-          <div>
-            <h2 class="font-bold text-lg mb-3"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
-            <p>
-              <%= sanitize(ranking.description) %>
-            </p>
+          <div class="flex flex-col justify-between p-4 leading-normal">
+              <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black"><%= ranking.position %>: <%= ranking.team.team_name%></h5>
+              <p class="mb-3 font-normal text-black dark:text-black"><%= sanitize(ranking.description) %></p>
           </div>
-        </li>
-      <% end %>
+        </div>
     <% end %>
-  </ul>
-  </div>
+</div>
