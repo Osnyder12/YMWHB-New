@@ -5,6 +5,9 @@ class HomesController < ApplicationController
 
   def index; end
 
+  def history
+  end
+
   private
 
   def set_power_ranking

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/power_rankings/years', to: 'power_rankings#years'
   get '/power_rankings/:year/weeks', to: 'power_rankings#weeks'
 
+  get '/ymwhb/history', to: 'homes#history'
+
   patch 'rankings/drag'
 
   resources :power_rankings, except: [:index] do
