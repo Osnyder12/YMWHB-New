@@ -1,10 +1,10 @@
 <div class="grid grid-cols-4 space-x-4 rounded-r-md">
-  <% @power_ranking_years.each_with_index do |pr_year, index| %>
+  <% @power_rankings.each_with_index do |pr, index| %>
   <div class="<%= weeks_column(index: index) %> mb-5 max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
-    <%= link_to "/power_rankings/#{pr_year}/weeks" do %>
-        <%= image_tag('burrow.png', class: 'm-auto') %>
+    <%= link_to "/power_rankings/#{pr.year}/weeks" do %>
+        <%= image_tag(pr.pr_avatar, class: 'm-auto') %>
         <div class="p-5">
-            <h5 class="align-baseline text-2xl font-bold tracking-tight text-black dark:text-black">2022</h5>
+            <h5 class="align-baseline text-2xl font-bold tracking-tight text-black dark:text-black"><%= pr.year %></h5>
         </div>
     <% end %>
   </div>

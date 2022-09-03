@@ -31,8 +31,10 @@ class RankingsController < ApplicationController
     @ranking.position = @power_ranking.rankings.length + 1
     avatar_file = params[:ranking][:avatar]&.original_filename
 
-    if avatar_file.match(/\s/).present?
-      avatar_file = avatar_file.gsub(" ", "_")
+    if avatar_file.present?
+      if avatar_file.match(/\s/).present?
+        avatar_file = avatar_file.gsub(" ", "_")
+      end
     end
 
     @ranking.avatar = avatar_file 
