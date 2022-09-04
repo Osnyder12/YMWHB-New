@@ -88,7 +88,7 @@ class RankingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking
-      @ranking = Ranking.find(params[:id])
+      @ranking = Ranking.find_by(id: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -97,6 +97,6 @@ class RankingsController < ApplicationController
     end
 
     def set_power_ranking
-      @power_ranking = PowerRanking.find(params['power_ranking_id'])
+      @power_ranking = PowerRanking.find_by(id: params['power_ranking_id'])
     end
 end

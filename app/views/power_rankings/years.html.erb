@@ -1,4 +1,4 @@
-<div class="grid grid-cols-4 space-x-4 rounded-r-md">
+<div class="grid grid-cols-4 space-x-4 rounded-r-md sm:grid sm:grid-cols-1">
   <% @power_rankings.each_with_index do |pr, index| %>
   <div class="<%= weeks_column(index: index) %> mb-5 max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
     <%= link_to "/power_rankings/#{pr.year}/weeks" do %>
