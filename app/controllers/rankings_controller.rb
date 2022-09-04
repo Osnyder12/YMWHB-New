@@ -29,6 +29,7 @@ class RankingsController < ApplicationController
     @ranking.user = current_user
     @ranking.rankable = @power_ranking
     @ranking.position = @power_ranking.rankings.length + 1
+    @ranking.rank_number = @ranking.position
     avatar_file = params[:ranking][:avatar]&.original_filename
 
     if avatar_file.present?
@@ -44,7 +45,7 @@ class RankingsController < ApplicationController
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Ranking was successfully created." }
         format.json { render :show, status: :created, location: @ranking }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity }
         format.json { render json: @ranking.errors, status: :unprocessable_entity }
       end
     end
