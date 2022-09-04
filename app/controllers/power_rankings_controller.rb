@@ -18,9 +18,11 @@ class PowerRankingsController < ApplicationController
     @power_ranking = PowerRanking.new(power_ranking_params)
 
     @power_ranking.user_id = current_user.id
-    avatar_file = params[:avatar]&.original_filename
+    @power_ranking.week = params[:power_ranking][:week]
+    @power_ranking.year = params[:power_ranking][:year]
+    avatar_file = params[:power_ranking][:avatar]&.original_filename
 
-    if avatar_file.match(/\s/).present?
+    if avatar_file&.match(/\s/)&.present?
       avatar_file = avatar_file.gsub(" ", "_")
     end
 
