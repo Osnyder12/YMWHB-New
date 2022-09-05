@@ -20,6 +20,8 @@ class PowerRankingsController < ApplicationController
     @power_ranking.user_id = current_user.id
     @power_ranking.week = params[:power_ranking][:week]
     @power_ranking.year = params[:power_ranking][:year]
+    @power_ranking.title = params[:power_ranking][:title]
+    @power_ranking.introduction_paragraph = params[:power_ranking][:introduction_paragraph]
     avatar_file = params[:power_ranking][:avatar]&.original_filename
 
     if avatar_file&.match(/\s/)&.present?
@@ -27,7 +29,7 @@ class PowerRankingsController < ApplicationController
     end
 
     @power_ranking.avatar = avatar_file
-
+binding.pry
     respond_to do |format|
       if @power_ranking.save
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully created." }
@@ -81,7 +83,7 @@ class PowerRankingsController < ApplicationController
     end
 
     def power_ranking_params
-      params.permit(:id, :week, :year, :avatar)
+      params.permit(:id, :week, :year, :title, :introduction_paragraph, :avatar)
     end
 
     def set_rankings

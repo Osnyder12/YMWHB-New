@@ -19,6 +19,21 @@
   <% end %>
   <% end %>
 
+  <div class="mb-5 border-b border-yellow-500">
+    <div class="justify-items-center m-auto pb-10 bg-transparent w-100">
+        <h1 class="text-black font-serif text-3xl"><%= @power_ranking.title %></h1>
+    </div>
+
+    <div class="m-auto">
+      <% if @power_ranking.avatar.url.present? %>
+        <%= image_tag(@power_ranking.pr_avatar, class: 'object-contain') %>
+      <% end %>
+    </div>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+      <p class="mb-3 font-normal text-black dark:text-black"><%= @power_ranking.introduction_paragraph %></p>
+    </div>
+  </div>
+
   <div class="grid grid-cols-1 rounded-r-md mb-10 w-full">
     <% @rankings.each do |ranking| %>
         <div class="flex flex-col mt-10 w-full items-center bg-white rounded-lg border shadow-md md:flex-row dark:border-slate-200 dark:bg-white">
