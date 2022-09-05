@@ -54,6 +54,8 @@ gem 'carrierwave', '~> 2.0'
 # Ranking Sorting
 gem 'acts_as_list'
 
+gem 'foreman'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
