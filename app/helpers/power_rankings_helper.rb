@@ -3,6 +3,10 @@ module PowerRankingsHelper
     power_ranking.rankings.empty? ? 'Add Rankings' : 'Edit Rankings'
   end
 
+  def background_color(action:)
+    action == 'new' ? 'bg-white-200' : 'bg-gray-200'
+  end
+
   def weeks_column(index:)
     beginning = [0, 4, 8, 12, 16 ]
     left_middle = [1, 5, 9, 13, 17]

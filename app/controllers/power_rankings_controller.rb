@@ -29,7 +29,7 @@ class PowerRankingsController < ApplicationController
     end
 
     @power_ranking.avatar = avatar_file
-binding.pry
+
     respond_to do |format|
       if @power_ranking.save
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully created." }

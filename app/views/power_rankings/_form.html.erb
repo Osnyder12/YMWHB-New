@@ -13,32 +13,32 @@
 
 
   <div class="flex flex-wrap -mx-3 mb-6">
-    <% if params['action'] == 'new' %>
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :week, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.number_field :week, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+        <%= form.number_field :week, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+                                     value: power_ranking.nil? ? "" : power_ranking.week, disabled: params['action'] != 'new' %>
       </div>
     
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.number_field :year, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+        <%= form.number_field :year, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+                                     value: power_ranking.nil? ? "" : power_ranking.year, disabled: params['action'] != 'new' %>
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :title, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.text_field :title, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+        <%= form.text_field :title, class: "appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :introduction_paragraph, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.text_area :introduction_paragraph, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+        <%= form.text_area :introduction_paragraph, class: "appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :avatar, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.file_field :avatar, class: "" %>
+        <%= form.file_field :avatar, class: "", value: power_ranking.nil? ? "" : power_ranking.avatar %>
       </div>
-    <% end %>
   </div>
   <div>
     <button type="submit" class="grid justify-items-center w-1/4 py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
