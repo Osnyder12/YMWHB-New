@@ -42,8 +42,18 @@ class PowerRankingsController < ApplicationController
   end
 
   def update
+    @power_ranking.title = params[:power_ranking][:title]
+    @power_ranking.introduction_paragraph = params[:power_ranking][:introduction_paragraph]
+    avatar_file = params[:power_ranking][:avatar]&.original_filename
+
+    if avatar_file&.match(/\s/)&.present?
+      avatar_file = avatar_file.gsub(" ", "_")
+    end
+
+    @power_ranking.avatar = avatar_file
+
     respond_to do |format|
-      if @power_ranking.update(power_ranking_params)
+      if @power_ranking.save
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully updated." }
         format.json { render :show, status: :ok, location: @power_ranking }
       else
