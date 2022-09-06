@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
 
@@ -24,6 +26,13 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
 
     @team.user_id = current_user.id
+    avatar_file = params[:team][:avatar]&.original_filename
+
+    if avatar_file&.match(/\s/)&.present?
+      avatar_file = avatar_file.gsub(" ", "_")
+    end
+
+    @team.avatar = avatar_file
 
     respond_to do |format|
       if @team.save
@@ -67,6 +76,6 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.require(:team).permit(:team_name, :team_owner, :image)
+      params.require(:team).permit(:team_name, :team_owner, :avatar)
     end
 end

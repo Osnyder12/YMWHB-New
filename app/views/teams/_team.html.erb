@@ -1,26 +1,18 @@
 <div id="<%= dom_id team %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Team name:</strong>
-    <%= team.team_name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Team owner:</strong>
-    <%= team.team_owner %>
-  </p>
-
-  <% if team.image.present? %>
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Image:</strong>
-    <%= team.image %>
-  </p>
-  <% end %>
-
-  <% if @current_user.present? %>
-  <% if action_name != "show" && @current_user.role == 'admin' %>
-    <%= link_to "Show this team", team, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this team', edit_team_path(team), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-  <% end %>
+  <tbody>
+    <tr class="bg-white border-b border-gray-700">
+      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+        <%= image_tag(team.team_avatar, class: "w-10 h-10 rounded-full", alt: "Edit Entry") %>
+      </th>
+      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+        <%= team.team_name %>
+      </th>
+      <td class="py-4 px-6">
+        <%= team.team_owner %>
+      </td>
+      <td class="py-4 px-6">
+        <a href="<%= edit_team_path(team) %>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+      </td>
+    </tr>
+  </tbody>
 </div>
