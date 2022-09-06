@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 
 # Image Storage
 gem 'carrierwave', '~> 2.0'
+gem 'rmagick'
 
 # Ranking Sorting
 gem 'acts_as_list'

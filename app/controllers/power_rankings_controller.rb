@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class PowerRankingsController < ApplicationController
   before_action :set_power_ranking, only: %i[ show edit update destroy ]
   before_action :set_rankings, only: %i[ edit show ]
@@ -18,10 +20,6 @@ class PowerRankingsController < ApplicationController
     @power_ranking = PowerRanking.new(power_ranking_params)
 
     @power_ranking.user_id = current_user.id
-    @power_ranking.week = params[:power_ranking][:week]
-    @power_ranking.year = params[:power_ranking][:year]
-    @power_ranking.title = params[:power_ranking][:title]
-    @power_ranking.introduction_paragraph = params[:power_ranking][:introduction_paragraph]
     avatar_file = params[:power_ranking][:avatar]&.original_filename
 
     if avatar_file&.match(/\s/)&.present?
@@ -42,18 +40,8 @@ class PowerRankingsController < ApplicationController
   end
 
   def update
-    @power_ranking.title = params[:power_ranking][:title]
-    @power_ranking.introduction_paragraph = params[:power_ranking][:introduction_paragraph]
-    avatar_file = params[:power_ranking][:avatar]&.original_filename
-
-    if avatar_file&.match(/\s/)&.present?
-      avatar_file = avatar_file.gsub(" ", "_")
-    end
-
-    @power_ranking.avatar = avatar_file
-
     respond_to do |format|
-      if @power_ranking.save
+      if @power_ranking.update(power_ranking_params)
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully updated." }
         format.json { render :show, status: :ok, location: @power_ranking }
       else
@@ -93,7 +81,7 @@ class PowerRankingsController < ApplicationController
     end
 
     def power_ranking_params
-      params.permit(:id, :week, :year, :title, :introduction_paragraph, :avatar)
+      params.require(:power_ranking).permit(:id, :week, :year, :title, :introduction_paragraph, :avatar)
     end
 
     def set_rankings
