@@ -9,7 +9,7 @@
     <% @power_rankings.each_with_index do |pr, index| %>
     <div class="<%= weeks_column(index: index) %> mb-5 bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
       <%= link_to "/power_rankings/#{pr.id}" do %>
-          <%= image_tag(pr.pr_avatar, class: 'object-cover') %>
+          <%= image_tag(pr.pr_avatar, class: 'm-auto object-cover') %>
           <div class="p-5">
               <h5 class="align-baseline text-2xl sm:text-1xl tracking-tight text-black dark:text-black">Week: <%= pr.week %></h5>
           </div>
