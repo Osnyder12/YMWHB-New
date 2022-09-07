@@ -50,12 +50,15 @@ gem "bootsnap", require: false
 
 # Image Storage
 gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
 gem 'rmagick'
 
 # Ranking Sorting
 gem 'acts_as_list'
 
 gem 'foreman'
+
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
