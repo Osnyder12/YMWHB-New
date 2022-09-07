@@ -1,12 +1,20 @@
-<div class="grid grid-cols-4 space-x-4 rounded-r-md">
-  <% @power_rankings.each_with_index do |pr, index| %>
-  <div class="<%= weeks_column(index: index) %> mb-5 max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
-    <%= link_to "/power_rankings/#{pr.year}/weeks" do %>
-        <%= image_tag(pr.pr_avatar, class: 'm-auto') %>
-        <div class="p-5">
-            <h5 class="align-baseline text-2xl font-bold tracking-tight text-black dark:text-black"><%= pr.year %></h5>
-        </div>
+<div class="h-screen w-screen">
+  <div class="grid grid-cols-2 mb-5 border-b border-yellow-500">
+    <div class="col-span-2 justify-items-center m-auto bg-transparent w-100">
+      <h1 class="text-gray-700 text-4xl sm:text-1xl font-mono mt">Power Rankings</h1>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-4 space-x-4 rounded-r-md">
+    <% @power_rankings.each_with_index do |pr, index| %>
+    <div class="<%= weeks_column(index: index) %> mb-5 max-w-sm bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
+      <%= link_to "/power_rankings/#{pr.year}/weeks" do %>
+          <%= image_tag(pr.pr_avatar, class: 'm-auto') %>
+          <div class="p-5">
+              <h5 class="align-baseline text-2xl sm:text-1xl tracking-tight text-black dark:text-black"><%= pr.year %></h5>
+          </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
-  <% end %>
 </div>
