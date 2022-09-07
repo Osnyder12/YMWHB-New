@@ -8,6 +8,6 @@ class PowerRanking < ApplicationRecord
   end
 
   def pr_avatar
-    avatar.present? ? avatar.url : 'burrow.png'
+    avatar.url.present? ? avatar.url : 'burrow.png'
   end
 end
