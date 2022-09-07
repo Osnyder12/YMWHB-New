@@ -49,7 +49,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Image Storage
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'fog-aws'
 gem 'rmagick'
