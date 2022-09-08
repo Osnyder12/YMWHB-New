@@ -10,7 +10,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    return if current_user.present?
+    if current_user.present?
+      return if current_user.role == 'admin' || current_user.role == 'super_admin'
+    end
 
     session[:return_to] = request.path
     redirect_to root_path

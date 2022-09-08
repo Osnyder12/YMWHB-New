@@ -2,6 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class TeamsController < ApplicationController
   before_action :set_team, only: %i[ show edit update destroy ]
+  before_action :authorize, only: %i[ new edit ]
 
   # GET /teams or /teams.json
   def index

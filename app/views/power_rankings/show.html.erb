@@ -20,11 +20,11 @@
   <% end %>
 
   <div class="mb-5 border-b border-yellow-500">
-    <div class="justify-items-center m-auto pb-10 bg-transparent w-100">
-        <h1 class="text-black font-serif text-3xl"><%= @power_ranking.title %></h1>
+    <div class="flex justify-center m-auto pb-10 bg-transparent w-100">
+        <h1 class="text-black font-serif text-3xl sm:text-1xl"><%= @power_ranking.title %></h1>
     </div>
 
-    <div class="m-auto">
+    <div class="flex justify-center m-auto">
       <% if @power_ranking.avatar.url.present? %>
         <%= image_tag(@power_ranking.avatar.url, class: 'object-contain') %>
       <% end %>

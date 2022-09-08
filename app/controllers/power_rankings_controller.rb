@@ -3,6 +3,7 @@ require 'carrierwave/orm/activerecord'
 class PowerRankingsController < ApplicationController
   before_action :set_power_ranking, only: %i[ show edit update destroy ]
   before_action :set_rankings, only: %i[ edit show ]
+  before_action :authorize, only: %i[ new edit ]
 
   def index
     @power_rankings = PowerRanking.all.order(week: :desc)
