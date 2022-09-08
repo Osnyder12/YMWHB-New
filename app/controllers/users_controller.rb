@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authorize, only: %i[ edit ]
 
   # GET /users or /users.json
   def index
@@ -36,6 +37,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    @user.pr_editor = params[:user][:pr_editor].to_i == 1
+
     respond_to do |format|
       if @user.save!(validate: false)
         format.html { redirect_to users_url, notice: "User was successfully updated." }
@@ -65,6 +68,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.fetch(:user, {}).permit(:role)
+      params.fetch(:user, {}).permit(:role, :pr_editor)
     end
 end

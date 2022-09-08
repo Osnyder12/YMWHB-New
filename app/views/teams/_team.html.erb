@@ -11,7 +11,7 @@
         <%= team.team_owner %>
       </td>
       <td class="py-4 px-6">
-        <%= link_to_if @current_user.present?, "Edit", edit_team_path(team), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline", disabled: true %>
+        <%= link_to_if @current_user.present?, "Edit", edit_team_path(team), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
       </td>
     </tr>
   </tbody>

@@ -1,14 +1,16 @@
 <div id="<%= dom_id user %>">
-  <% if action_name != "show" %>
-    <p class="my-5 flex items-center">
-      <strong class="block font-medium mr-2">User Email:</strong><%= user.email %>
-    </p>
-
-    <p class="my-5 flex items-center">
-      <strong class="block font-medium mr-2">User Role:</strong><%= user.role %>
-    </p>
-
-    <%= link_to 'Edit this user', edit_user_path(user), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  <tbody>
+    <tr class="bg-white border-b border-gray-700">
+      <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+        <%= user.email %>
+      </th>
+      <td class="py-4 px-6 text-gray-900">
+        <%= user.role %>
+      </td>
+      <td class="py-4 px-6">
+        <%= link_to_if @current_user.present?, "Edit User", edit_user_path(user), class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+      </td>
+    </tr>
+  </tbody>
 </div>
+
