@@ -1,8 +1,8 @@
 <div class="h-screen w-screen">
   <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-5 border-b border-yellow-500 lg:m-auto md:m-auto m-auto">
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100 lg:visible md:visible invisible">
-        <h1 class="text-yellow-500 font-serif text-8xl lg:visible md:visible invisible">YMWHB</h1>
-        <h2 class="text-yellow-500 justify-center w-fit m-auto lg:visible md:visible invisible">EST. 2015</h2>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100">
+        <h1 class="text-yellow-500 font-serif text-8xl">YMWHB</h1>
+        <h2 class="text-yellow-500 justify-center w-fit m-auto">EST. 2015</h2>
     </div>
 
     <div class="col-span-1 lg:col-span-1 md:col-span-1 m-auto">
@@ -15,7 +15,7 @@
     <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
           <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
           <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               Read
