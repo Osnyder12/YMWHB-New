@@ -1,18 +1,18 @@
 <div class="h-screen w-screen">
-  <div class="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-5 border-b border-yellow-500">
-    <div class="col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100 lg:visible md:visible invisible">
+  <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-5 border-b border-yellow-500">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100 lg:visible md:visible invisible">
         <h1 class="text-yellow-500 font-serif text-8xl lg:visible md:visible invisible">YMWHB</h1>
         <h2 class="text-yellow-500 justify-center w-fit m-auto lg:visible md:visible invisible">EST. 2015</h2>
     </div>
 
-    <div class="col-span-1 m-auto">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 m-auto">
       <%= image_tag('logo.png', size: "225x225", class: 'object-contain') %>
     </div>
   </div>
 
-  <div class="grid grid-cols-3 rounded-r-md">
+  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="mb-5 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
@@ -25,7 +25,7 @@
     </div>
     <% end %>
 
-    <div class="max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
