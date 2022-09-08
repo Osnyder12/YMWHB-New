@@ -12,7 +12,7 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
@@ -25,7 +25,7 @@
     </div>
     <% end %>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border m-auto border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
