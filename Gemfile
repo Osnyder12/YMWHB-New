@@ -49,13 +49,16 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Image Storage
-gem 'carrierwave', '~> 2.0'
+gem 'fog-google'
+gem 'carrierwave'
 gem 'rmagick'
 
 # Ranking Sorting
 gem 'acts_as_list'
 
 gem 'foreman'
+
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
