@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 rounded-r-md mb-10">
+  <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 rounded-r-md mb-10">
         <% if @last_year_power_ranking.present? %>
           <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="flex flex-col mt-10 items-center w-full bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
             <%= image_tag(@last_year_power_ranking.pr_avatar, class: 'object-cover w-full h-full rounded-t-lg md:w-48 md:rounded-none md:rounded-l-lg') %>
