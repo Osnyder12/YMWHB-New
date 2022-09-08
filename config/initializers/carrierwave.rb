@@ -1,13 +1,9 @@
 CarrierWave.configure do |config|
+  config.fog_provider = 'fog/google'
   config.fog_credentials = {
-    provider: 'AWS',
-    aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-    use_iam_profile: false,
-    region: 'us-east-1',
-    host: 'ymwhb.s3.amazonaws.com'
+      provider:               'Google',
+      google_project: ENV['GOOGLE_PROJECT'],
+      google_json_key_string: ENV['GOOGLE_JSON_KEY_STRING']
   }
-  
-  config.fog_directory  = ENV['AWS_BUCKET']
-  config.fog_public = false
+  config.fog_directory = ENV['GOOGLE_BUCKET']
 end
