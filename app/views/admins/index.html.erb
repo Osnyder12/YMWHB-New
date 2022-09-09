@@ -8,6 +8,7 @@
             <div class="text-xl px-6 py-4">New Power Ranking</div>
           <% end %>
         </li>
+        <% if %w[super_admin].include?(@current_user.role) %>
         <li class="rounded shadow-lg mb-3">
           <%= link_to users_path, method: :get, class: "rounded-md py-3 px-5 text-sm text-black block font-medium" do %>
             <div class="aspect-square">
@@ -16,5 +17,6 @@
             <div class="text-xl px-6 py-4">Users</div>
           <% end %>
         </li>
+        <% end %>
     </ul>
   </div>

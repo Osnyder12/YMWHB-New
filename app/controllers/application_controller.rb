@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if current_user.present?
-      return if current_user.role == 'admin' || current_user.role == 'super_admin'
+      return if %w[admin super_admin].include?(current_user.role)
     end
 
     session[:return_to] = request.path

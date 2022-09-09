@@ -9,7 +9,7 @@
   </h1>
 
   <% if @current_user.present? %>
-  <% if @current_user.role == 'admin' %>
+  <% if %w[super_admin].include?(@current_user.role) || @power_ranking.user_id == @current_user.id %>
     <div class="items-center mb-2">
       <%= link_to edit_label(@power_ranking), edit_power_ranking_path(@power_ranking), class: "py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" %>
       <div class="inline-block ml-2">

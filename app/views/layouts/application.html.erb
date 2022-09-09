@@ -42,7 +42,7 @@
     
                 <a href="/teams" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Teams</a>
     
-                <% if @current_user.present? && @current_user.role == 'admin' %>
+                <% if @current_user.present? && %w[admin super_admin].include?(@current_user.role) %>
                   <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
                 <% end %>
               </div>
@@ -73,7 +73,7 @@
         <li>
           <a href="/teams" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Teams</a>
         </li>
-        <% if @current_user.present? && @current_user.role == 'admin' %>
+        <% if @current_user.present? && %w[admin super_admin].include?(@current_user.role) %>
         <li>
           <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
         </li>
