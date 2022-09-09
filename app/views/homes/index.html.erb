@@ -1,21 +1,21 @@
 <div class="h-screen w-screen">
-  <div class="grid grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-5 border-b border-yellow-500">
-    <div class="col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100 lg:visible md:visible invisible">
-        <h1 class="text-yellow-500 font-serif text-8xl lg:visible md:visible invisible">YMWHB</h1>
-        <h2 class="text-yellow-500 justify-center w-fit m-auto lg:visible md:visible invisible">EST. 2015</h2>
+  <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-5 border-b border-yellow-500 lg:m-auto md:m-auto m-auto">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100">
+        <h1 class="text-yellow-500 font-serif text-8xl">YMWHB</h1>
+        <h2 class="text-yellow-500 justify-center w-fit m-auto">EST. 2015</h2>
     </div>
 
-    <div class="col-span-1 m-auto">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 m-auto">
       <%= image_tag('logo.png', size: "225x225", class: 'object-contain') %>
     </div>
   </div>
 
-  <div class="grid grid-cols-3 rounded-r-md">
+  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="mb-5 max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black mb-5">Week <%= @power_ranking.week %> Power Rankings</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
           <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
           <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
               Read
@@ -25,7 +25,7 @@
     </div>
     <% end %>
 
-    <div class="max-w-sm h-full bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border m-auto border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
       <div class="p-5">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
@@ -33,9 +33,23 @@
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
       </div>
     </div>
+
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border m-auto border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
+      <%= image_tag('HeadShot.png', class: 'rounded-t-lg m-auto') %>
+      <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Commissioner</h5>
+          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">Owen Snyder</h6>
+          <ul>
+            <li><span class="font-bold">League Member:</span> 2015-Present</li>
+            <li><span class="font-bold">Commissioner Tenure:</span> 2019-Present</li>
+            <li><span class="font-bold">Rings:</span> 1</li>
+            <li><span class="font-bold">NFL Team:</span> The New York Football Giants</li>
+          </ul>
+      </div>
+    </div>
   </div>
 
-  <div class="grid grid-cols-2 rounded-r-md mb-10">
+  <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 rounded-r-md mb-10">
         <% if @last_year_power_ranking.present? %>
           <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="flex flex-col mt-10 items-center w-full bg-slate-200 rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-slate-200 dark:bg-slate-200 dark:hover:bg-slate-200">
             <%= image_tag(@last_year_power_ranking.pr_avatar, class: 'object-cover w-full h-full rounded-t-lg md:w-48 md:rounded-none md:rounded-l-lg') %>
