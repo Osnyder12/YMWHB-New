@@ -45,9 +45,11 @@
                 <% if @current_user.present? && %w[admin super_admin].include?(@current_user.role) %>
                   <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
                 <% end %>
+                <% if @current_user.present? %>
                 <% if @current_user.pr_editor || %w[admin super_admin].include?(@current_user.role) %>
                   <a href="/power_rankings/new" class="text-gray-300 hover:bg-gray-700 hover:text-white bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Create Power Ranking</a>
-                <%%>
+                <% end %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -81,10 +83,12 @@
           <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
         </li>
         <% end %>
+        <% if @current_user.present? %>
         <% if @current_user.pr_editor || %w[admin super_admin].include?(@current_user.role) %>
         <li>
           <a href="/power_rankings/new" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 overflow-hidden bg-green-600 rounded-md text-sm font-medium">Create New PR</a>
         </li>
+        <% end %>
         <% end %>
       </ul>
     </div>
