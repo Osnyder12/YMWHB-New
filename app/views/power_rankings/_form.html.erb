@@ -16,13 +16,13 @@
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :week, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :week, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
-                                     value: power_ranking.nil? ? "" : power_ranking.week, disabled: params['action'] != 'new' %>
+                                     value: power_ranking.persisted? ? power_ranking.week : @last_weeks_pr.week, disabled: params['action'] != 'new' %>
       </div>
     
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :year, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
-                                     value: power_ranking.nil? ? "" : power_ranking.year, disabled: params['action'] != 'new' %>
+                                     value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr.year, disabled: params['action'] != 'new' %>
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -38,7 +38,7 @@
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= form.label :avatar, 'Avatar (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= form.label :avatar, 'Main Image (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.file_field :avatar %>
       </div>
   </div>
