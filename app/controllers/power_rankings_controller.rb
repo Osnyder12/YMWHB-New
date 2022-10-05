@@ -12,8 +12,11 @@ class PowerRankingsController < ApplicationController
   def show; end
 
   def new
-    @last_weeks_pr = PowerRanking.where(year: Date.today.year).last
-    @last_weeks_pr_week = @last_weeks_pr.week + 1
+    last_weeks_pr = PowerRanking.where(year: Date.today.year).last
+
+    @last_weeks_pr_year = @last_weeks_pr.present? ? @last_weeks_pr.year : Date.today.year
+    @last_weeks_pr_week = @last_weeks_pr.present? ? @last_weeks_pr&.week + 1 : 1
+
     @power_ranking = PowerRanking.new
   end
 

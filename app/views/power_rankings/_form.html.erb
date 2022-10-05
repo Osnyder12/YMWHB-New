@@ -22,7 +22,7 @@
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :year, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
-                                     value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr.year, disabled: params['action'] != 'new' %>
+                                     value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr_year, disabled: params['action'] != 'new' %>
       </div>
 
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
