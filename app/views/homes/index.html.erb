@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
+  <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md border-b border-yellow-500">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
     <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
