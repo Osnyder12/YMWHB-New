@@ -12,9 +12,9 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-slate-200 rounded-lg border border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
-      <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-t-lg m-auto') %>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-white rounded-lg border border-gray-100 shadow-lg">
       <div class="p-5">
+        <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
           <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
           <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
@@ -25,18 +25,18 @@
     </div>
     <% end %>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border m-auto border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
-      <%= image_tag('OrkinPestControl.png', class: 'rounded-t-lg m-auto') %>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
       <div class="p-5">
+        <%= image_tag('OrkinPestControl.png', class: 'rounded-lg m-auto') %>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
           <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">2021 Champion</h6>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
       </div>
     </div>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-slate-200 rounded-lg border m-auto border-gray-100 shadow-lg dark:bg-slate-200 dark:border-gray-100">
-      <%= image_tag('HeadShot.png', class: 'rounded-t-lg m-auto') %>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
       <div class="p-5">
+        <%= image_tag('HeadShot.png', class: 'rounded-lg m-auto') %>
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Commissioner</h5>
           <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">Owen Snyder</h6>
           <ul>
