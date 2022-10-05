@@ -67,7 +67,7 @@ class PowerRankingsController < ApplicationController
   end
 
   def years
-    power_ranking_years = PowerRanking.pluck(:year).uniq.sort
+    power_ranking_years = PowerRanking.pluck(:year).uniq.sort.reverse
 
     @power_rankings = power_ranking_years.map do |year|
       PowerRanking.find_by(year: year)
@@ -77,7 +77,7 @@ class PowerRankingsController < ApplicationController
   def weeks
     @year = params[:year]
 
-    @power_rankings = PowerRanking.where(year: @year).order(:week)
+    @power_rankings = PowerRanking.where(year: @year).order(:week).reverse
   end
 
   private
