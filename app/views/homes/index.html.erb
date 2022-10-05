@@ -12,40 +12,34 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full m-auto bg-white rounded-lg border border-gray-100 shadow-lg">
-      <div class="p-5">
-        <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
-          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
-          <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-              Read
-              <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-          </a>
-      </div>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white rounded-lg border border-gray-100 shadow-lg">
+      <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
+        <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
+        <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+            Read
+            <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </a>
     </div>
     <% end %>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
-      <div class="p-5">
-        <%= image_tag('OrkinPestControl.png', class: 'rounded-lg m-auto') %>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
-          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">2021 Champion</h6>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
-      </div>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
+      <%= image_tag('OrkinPestControl.png', class: 'rounded-lg m-auto') %>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
+        <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">2021 Champion</h6>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
     </div>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
-      <div class="p-5">
-        <%= image_tag('HeadShot.png', class: 'rounded-lg m-auto') %>
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Commissioner</h5>
-          <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">Owen Snyder</h6>
-          <ul>
-            <li><span class="font-bold">League Member:</span> 2015-Present</li>
-            <li><span class="font-bold">Commissioner Tenure:</span> 2019-Present</li>
-            <li><span class="font-bold">Rings:</span> 1</li>
-            <li><span class="font-bold">NFL Team:</span> The New York Football Giants</li>
-          </ul>
-      </div>
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
+      <%= image_tag('HeadShot.png', class: 'rounded-lg m-auto') %>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Commissioner</h5>
+        <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">Owen Snyder</h6>
+        <ul>
+          <li><span class="font-bold">League Member:</span> 2015-Present</li>
+          <li><span class="font-bold">Commissioner Tenure:</span> 2019-Present</li>
+          <li><span class="font-bold">Rings:</span> 1</li>
+          <li><span class="font-bold">NFL Team:</span> The New York Football Giants</li>
+        </ul>
     </div>
   </div>
 
