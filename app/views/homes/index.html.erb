@@ -12,7 +12,7 @@
 
   <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white rounded-lg border border-gray-100 shadow-lg">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
         <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
@@ -23,14 +23,14 @@
     </div>
     <% end %>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white m-auto">
       <%= image_tag('OrkinPestControl.png', class: 'rounded-lg m-auto') %>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Orkins Pest Control</h5>
         <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">2021 Champion</h6>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">OPC defeats Slammers to get his second YMWHB Ring</p>
     </div>
 
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white rounded-lg border m-auto border-gray-100 shadow-lg">
+    <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white m-auto">
       <%= image_tag('HeadShot.png', class: 'rounded-lg m-auto') %>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black mb-5">Commissioner</h5>
         <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800">Owen Snyder</h6>
