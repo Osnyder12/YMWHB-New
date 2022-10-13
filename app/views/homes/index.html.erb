@@ -1,5 +1,5 @@
 <div class="h-screen w-screen">
-  <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-5 border-b border-yellow-500 lg:m-auto md:m-auto m-auto">
+  <header class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 mb-5 border-b border-yellow-500 lg:m-auto md:m-auto m-auto">
     <div class="col-span-1 lg:col-span-1 md:col-span-1 justify-items-center m-auto pb-10 bg-transparent w-100">
         <h1 class="text-yellow-500 font-serif text-8xl">YMWHB</h1>
         <h2 class="text-yellow-500 justify-center w-fit m-auto">EST. 2015</h2>
@@ -8,11 +8,11 @@
     <div class="col-span-1 lg:col-span-1 md:col-span-1 m-auto">
       <%= image_tag('logo.png', size: "225x225", class: 'object-contain') %>
     </div>
-  </div>
+  </header>
 
   <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 rounded-r-md border-b border-yellow-500">
     <% if @power_ranking.present? && @power_ranking.has_rankings?%>
-    <div class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white">
+    <section aria-label="Current Weeks Power Rankings" class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
         <h6 class="mb-2 text-1xl font-bold tracking-tight text-gray-800"><%= @power_ranking.year %></h6>
@@ -20,7 +20,7 @@
             Read
             <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
         </a>
-    </div>
+    </section>
     <% end %>
 
     <div class="col-span-1 lg:col-span-1 md:col-span-1 max-w-sm h-full p-5 bg-white m-auto">
