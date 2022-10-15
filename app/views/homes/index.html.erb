@@ -11,7 +11,7 @@
   </header>
 
   <div class="grid lg:grid-cols-3 md:grid-cols-3 rounded-r-md border-b border-yellow-500">
-    <% if (@power_ranking.present? && @power_ranking.has_rankings? && @power_ranking.published) || @power_ranking.user_id == current_user.id %>
+    <% if (@power_ranking.present? && @power_ranking.has_rankings? && @power_ranking.published) || @power_ranking.user_id == current_user&.id %>
     <section aria-label="Current Weeks Power Rankings" class="col-span-1 lg:col-span-1 md:col-span-1 mb-5 max-w-sm h-full p-5 m-auto bg-white">
       <%= image_tag(@power_ranking.pr_avatar, class: 'rounded-lg m-auto') %>
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
