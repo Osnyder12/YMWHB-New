@@ -11,7 +11,7 @@ class PowerRankingsController < ApplicationController
 
   def show
     # dont show it unless you're the owner or its published
-    unless @power_ranking.user_id == current_user.id || @power_ranking.published
+    unless @power_ranking.user_id == current_user&.id || @power_ranking.published
       respond_to do |format|
         format.html { redirect_to root_url }
         format.json { head :no_content }
@@ -33,7 +33,7 @@ class PowerRankingsController < ApplicationController
   def create
     @power_ranking = PowerRanking.new(power_ranking_params)
 
-    @power_ranking.user_id = current_user.id
+    @power_ranking.user_id = current_user&.id
     avatar_file = params[:power_ranking][:avatar]&.original_filename
 
     if avatar_file&.match(/\s/)&.present?
@@ -77,7 +77,7 @@ class PowerRankingsController < ApplicationController
 
   def years
     power_ranking_years = PowerRanking.where(published: true)
-                                      .or(PowerRanking.where(user_id: current_user.id))
+                                      .or(PowerRanking.where(user_id: current_user&.id))
                                       .pluck(:year)
                                       .uniq.sort.reverse
 
@@ -90,7 +90,7 @@ class PowerRankingsController < ApplicationController
     @year = params[:year]
 
     @power_rankings = PowerRanking.where(published: true)
-                                  .or(PowerRanking.where(user_id: current_user.id))
+                                  .or(PowerRanking.where(user_id: current_user&.id))
                                   .where(year: @year)
                                   .order(:week).reverse
 

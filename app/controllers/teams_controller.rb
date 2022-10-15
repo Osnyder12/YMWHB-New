@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
 
-    @team.user_id = current_user.id
+    @team.user_id = current_user&.id
     avatar_file = params[:team][:avatar]&.original_filename
 
     if avatar_file&.match(/\s/)&.present?
