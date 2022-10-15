@@ -9,7 +9,15 @@ class PowerRankingsController < ApplicationController
     @power_rankings = PowerRanking.all.order(week: :desc)
   end
 
-  def show; end
+  def show
+    # dont show it unless you're the owner or its published
+    unless @power_ranking.user_id == current_user.id || @power_ranking.published
+      respond_to do |format|
+        format.html { redirect_to root_url }
+        format.json { head :no_content }
+      end
+    end
+  end
 
   def new
     last_weeks_pr = PowerRanking.where(year: Date.today.year).last
@@ -46,6 +54,7 @@ class PowerRankingsController < ApplicationController
   end
 
   def update
+    puts power_ranking_params
     respond_to do |format|
       if @power_ranking.update(power_ranking_params)
         format.html { redirect_to power_ranking_url(@power_ranking), notice: "Power ranking was successfully updated." }
@@ -61,13 +70,16 @@ class PowerRankingsController < ApplicationController
     @power_ranking.destroy
 
     respond_to do |format|
-      format.html { redirect_to '/', notice: "Power ranking was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Power ranking was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   def years
-    power_ranking_years = PowerRanking.pluck(:year).uniq.sort.reverse
+    power_ranking_years = PowerRanking.where(published: true)
+                                      .or(PowerRanking.where(user_id: current_user.id))
+                                      .pluck(:year)
+                                      .uniq.sort.reverse
 
     @power_rankings = power_ranking_years.map do |year|
       PowerRanking.find_by(year: year)
@@ -77,7 +89,17 @@ class PowerRankingsController < ApplicationController
   def weeks
     @year = params[:year]
 
-    @power_rankings = PowerRanking.where(year: @year).order(:week).reverse
+    @power_rankings = PowerRanking.where(published: true)
+                                  .or(PowerRanking.where(user_id: current_user.id))
+                                  .where(year: @year)
+                                  .order(:week).reverse
+
+    if @power_rankings.empty?
+      respond_to do |format|
+        format.html { redirect_to power_rankings_years_url }
+        format.json { head :no_content }
+      end
+    end
   end
 
   private
@@ -87,7 +109,7 @@ class PowerRankingsController < ApplicationController
     end
 
     def power_ranking_params
-      params.require(:power_ranking).permit(:id, :week, :year, :title, :introduction_paragraph, :avatar)
+      params.require(:power_ranking).permit(:id, :week, :year, :title, :introduction_paragraph, :avatar, :published)
     end
 
     def set_rankings
