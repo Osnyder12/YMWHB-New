@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :teams
   resources :users
-  root 'homes#index'
+  root 'homes#home'
+  get '/index', to: 'homes#index'
 
   get '/power_rankings/years', to: 'power_rankings#years'
   get '/power_rankings/:year/weeks', to: 'power_rankings#weeks'

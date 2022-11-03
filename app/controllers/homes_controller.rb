@@ -1,9 +1,10 @@
 class HomesController < ApplicationController
   # skip_before_action :authorize
-  before_action :set_power_ranking, only: %i[index]
-  before_action :set_last_year_power_ranking, only: %i[index]
+  before_action :set_power_ranking, only: %i[index home]
+  before_action :set_last_year_power_ranking, only: %i[index home]
 
   def index; end
+  def home; end
 
   def history
   end
