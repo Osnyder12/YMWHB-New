@@ -1,8 +1,8 @@
 <!-- Main Section -->
-<section class="grid">
-  <div>
-    <% binding.pry %>
-    <%= image_tag(@power_ranking.avatar.thumb.url, class: 'rounded-lg m-auto object-cover w-full h-11') %>
-  </div>
-
-</section>
+<div class="w-screen h-screen">
+  <section class="grid max-h-[430-px]">
+    <div class="">
+      <%= image_tag(@power_ranking.avatar.pr_homepage.url, class: 'rounded-lg m-auto') %>
+    </div>
+  </section>
+</div>
