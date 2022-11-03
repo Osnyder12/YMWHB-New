@@ -320,6 +320,7 @@ DEPENDENCIES
   foreman
   importmap-rails
   jbuilder
+  mini_magick
   pg (~> 1.1)
   pry-byebug
   pry-rails
