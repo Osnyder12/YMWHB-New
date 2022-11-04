@@ -35,7 +35,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :pr_homepage do
-    process resize_to_fit: [370, 430]
+    process resize_to_fill: [370, 230]
+  end
+
+  def resize_local_image(picture_path)
+    self.store!(picture_path)  
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
