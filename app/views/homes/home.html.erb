@@ -1,6 +1,6 @@
 <!-- Main Section -->
 <div class="w-screen h-screen">
-  <section class="grid-cols-3 max-h-[430-px]">
+  <section class="grid-cols-3 max-h-[430-px] space-x-7">
     <div class="h-full w-96">
       <div class="relative max-w-[370px]">
         
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="h-full w-96">
-      <%= image_tag(@power_ranking.avatar.pr_homepage.url, class: 'rounded-sm') %>
+      <%= image_tag(@power_ranking.avatar.pr_homepage.url, class: 'rounded-md') %>
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:text-black">Week <%= @power_ranking.week %> Power Rankings</h5>
       <h6 class="mb-2 font-bold tracking-tight text-gray-800 text-1xl"><%= @power_ranking.year %></h6>
       <a href="<%= power_ranking_path(@power_ranking.id)%>" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
