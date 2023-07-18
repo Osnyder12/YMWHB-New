@@ -1,5 +1,5 @@
 <div class="w-screen h-screen">
-  <header class="grid m-auto mb-5 bg-cover border-b border-yellow-500 lg:grid-cols-2 md:grid-cols-2 lg:m-auto md:m-auto">
+  <header class="grid m-auto mb-5 bg-cover border-b border-yellow-500 lg:grid-cols-2 md:grid-cols-2 grid-grid-cols-1 lg:m-auto md:m-auto">
     <div class="col-span-1 pb-10 m-auto bg-transparent lg:col-span-1 md:col-span-1 justify-items-center w-100">
         <h1 class="font-serif text-yellow-500 text-8xl">YMWHB</h1>
         <h2 class="justify-center m-auto text-yellow-500 w-fit">EST. 2015</h2>
@@ -12,16 +12,31 @@
 
     <div class="grid grid-cols-1 gap-4 mt-5 md:grid-cols-2 justify-items-center">
       <div class="relative w-full h-56 col-span-1 m-auto">
-        <%= image_tag('generic-football.png', class: 'absolute opacity-50 object-cover w-full h-56') %>
+        <%= image_tag('generic-football.png', class: 'absolute opacity-40 object-cover md:w-full h-56 w-3/4 m-auto') %>
         <div class="absolute bottom-5 left-5">
-          <h2 class="font-bold">Power Rankings</h2>
+          <h2 class="font-bold">Week 1 Power Rankings</h2>
+          <p>2023</p>
         </div>
       </div>
       <div class="relative w-full h-56 col-span-1 m-auto">
-        <%= image_tag('mahomes-rings.png', class: 'absolute opacity-50 object-cover w-full h-56') %>
+        <%= image_tag('mahomes-rings.png', class: 'absolute opacity-40 object-cover md:w-full h-56 w-3/4 m-auto') %>
         <div class="absolute bottom-5 left-5">
-          <h2 class="font-bold">Power Rankings</h2>
+          <h2 class="font-bold">Mr. Alexis Texas</h2>
+          <p>Read more about the 2022 champion here.</p>
         </div>
       </div>
     </div>
+
+    <footer class="p-4 mt-10 bg-white rounded-lg md:flex md:items-center md:justify-between md:p-6">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2015 <a href="/" class="hover:underline">YMWHB™</a>
+      </span>
+      <ul class="flex items-center flex-shrink mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+          <li>
+              <a href="/power_rankings/years" class="mr-4 hover:underline md:mr-6 ">Power Rankings</a>
+          </li>
+          <li>
+              <a href="/teams" class="mr-4 hover:underline md:mr-6">Teams</a>
+          </li>
+      </ul>
+  </footer>
 </div>
