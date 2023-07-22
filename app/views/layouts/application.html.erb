@@ -12,42 +12,42 @@
     <script src="https://kit.fontawesome.com/9788853ead.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="h-screen w-screen">
+  <body class="w-screen h-screen">
     <nav class="bg-gray-800">
-      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div class="px-2 max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
-            <button type="button" data-collapse-toggle="navbar-default" id="menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <button type="button" data-collapse-toggle="navbar-default" id="menu-button" class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
 
-              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <svg class="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
 
-              <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+              <svg class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex-shrink-0 flex items-center">
+          <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
+            <div class="flex items-center flex-shrink-0">
               <a href="/" class="text-yellow-500">YMWHB</a>
             </div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
-                <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="/" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Home</a>
                 
-                <a href="/power_rankings/years" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Power Rankings</a>
+                <a href="/power_rankings/years" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" aria-current="page">Power Rankings</a>
     
-                <a href="/teams" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Teams</a>
+                <a href="/teams" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Teams</a>
     
                 <% if @current_user.present? && %w[admin super_admin].include?(@current_user.role) %>
-                  <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
+                  <a href="/admin_console" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Admin Console</a>
                 <% end %>
                 <% if @current_user.present? %>
                 <% if @current_user.pr_editor || %w[admin super_admin].include?(@current_user.role) %>
-                  <a href="/power_rankings/new" class="text-gray-300 hover:bg-gray-700 hover:text-white bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Create Power Ranking</a>
+                  <a href="/power_rankings/new" class="px-3 py-2 text-sm font-medium text-gray-300 bg-green-600 rounded-md hover:bg-gray-700 hover:text-white">Create Power Ranking</a>
                 <% end %>
                 <% end %>
               </div>
@@ -59,41 +59,41 @@
           </div>
           <% else %>
           <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <a href="/sign_in" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Sign In</a>
+            <a href="/sign_in" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" aria-current="page">Sign In</a>
     
-            <a href="/sign_up" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign Up</a>
+            <a href="/sign_up" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Sign Up</a>
           </div>
           <% end %>
         </div>
       </div>
     </nav>
-    <div class="hidden z-10 w-44 font-normal overflow-hidden rounded-b-sm bg-slate-800 divide-y divide-gray-100 shadow" id="menu">
-      <ul class="text-base text-gray-700 pt-4 sm:flex sm:justify-between sm:pt-0 sm:bg-gray-800">
+    <div class="z-10 hidden overflow-hidden font-normal divide-y divide-gray-100 rounded-b-sm shadow w-44 bg-slate-800" id="menu">
+      <ul class="pt-4 text-base text-gray-700 sm:flex sm:justify-between sm:pt-0 sm:bg-gray-800">
         <li>
-          <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+          <a href="/" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="/power_rankings/years" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Power Rankings</a>
+          <a href="/power_rankings/years" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" aria-current="page">Power Rankings</a>
         </li>
         <li>
-          <a href="/teams" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Teams</a>
+          <a href="/teams" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Teams</a>
         </li>
         <% if @current_user.present? && %w[admin super_admin].include?(@current_user.role) %>
         <li>
-          <a href="/admin_console" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Admin Console</a>
+          <a href="/admin_console" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Admin Console</a>
         </li>
         <% end %>
         <% if @current_user.present? %>
         <% if @current_user.pr_editor || %w[admin super_admin].include?(@current_user.role) %>
         <li>
-          <a href="/power_rankings/new" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Create New PR</a>
+          <a href="/power_rankings/new" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Create New PR</a>
         </li>
         <% end %>
         <% end %>
       </ul>
     </div>
   </div>
-    <main class="container mx-auto mt-20 flex">
+    <main class="container flex mx-auto mt-20">
       <%= yield %>
     </main>
   </body>
