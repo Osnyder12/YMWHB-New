@@ -11,15 +11,15 @@
   </header>
 
     <div class="grid grid-cols-1 gap-4 m-auto mt-5 md:grid-cols-2 justify-items-center">
-      <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="relative w-full h-56 col-span-1 m-auto">
-        <%= image_tag('generic-football.png', class: 'absolute rounded-xl opacity-40 object-cover md:w-full h-56 w-3/4 m-auto') %>
+      <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="relative w-full h-56 col-span-1 md:m-auto">
+        <%= image_tag('generic-football.png', class: 'absolute md:rounded-xl opacity-40 object-cover w-full h-56 md:m-auto') %>
         <div class="absolute bottom-5 left-5">
           <h2 class="font-bold">Week 1 Power Rankings</h2>
           <p>2023</p>
         </div>
       </a>
-      <a class="relative w-full h-56 col-span-1 m-auto">
-        <%= image_tag('mahomes-rings.png', class: 'absolute rounded-xl opacity-40 object-cover md:w-full h-56 w-3/4 m-auto') %>
+      <a class="relative w-full h-56 col-span-1 md:m-auto">
+        <%= image_tag('mahomes-rings.png', class: 'absolute md:rounded-xl opacity-40 object-cover w-full h-56 md:m-auto') %>
         <div class="absolute bottom-5 left-5">
           <h2 class="font-bold">Mr. Alexis Texas</h2>
           <p>Read more about the 2022 champion here.</p>
@@ -29,7 +29,7 @@
 
     <div class="grid grid-cols-1 mt-5">
       <a href="/ymwhb/history" class="relative w-full h-56 col-span-1">
-        <%= image_tag('nfl-history.png', class: 'absolute rounded-xl opacity-40 object-cover md:w-full h-56 w-3/4 m-auto') %>
+        <%= image_tag('nfl-history.png', class: 'absolute md:rounded-xl opacity-40 object-cover w-full h-56 md:m-auto') %>
         <div class="absolute bottom-10 left-10">
           <h2 class="font-bold">Our History</h2>
           <p>Read more about our past champions here.</p>
