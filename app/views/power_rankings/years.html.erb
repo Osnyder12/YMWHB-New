@@ -7,7 +7,7 @@
 
   <div class="grid grid-cols-1 gap-4 m-auto md:grid-cols-4 rounded-r-md">
     <% @power_rankings.each_with_index do |pr, index| %>
-    <a href="/power_rankings/#{pr.year}/weeks" class="<%= weeks_column(index: index) %> relative w-full h-80 md:m-auto mb-10">
+    <a href="/power_rankings/<%= pr.year %>/weeks" class="<%= weeks_column(index: index) %> relative w-full h-80 md:m-auto mb-10">
       <%= image_tag(pr.pr_avatar, class: 'absolute md:rounded-xl opacity-80 object-cover w-full h-80 md:m-auto') %>
       <div class="absolute -bottom-10 left-5 md:border-none">
         <h2 class="font-bold border-b-black"><%= pr.year %></h2>
