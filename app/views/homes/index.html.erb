@@ -11,7 +11,7 @@
   </header>
 
     <div class="grid grid-cols-1 gap-4 m-auto mt-5 md:grid-cols-2 justify-items-center">
-      <% unless @last_year_power_ranking.present? %>
+      <% if @last_year_power_ranking.present? %>
       <a href="<%= power_ranking_path(@last_year_power_ranking.id) %>" class="relative w-full h-56 col-span-1 md:m-auto">
         <%= image_tag('generic-football.png', class: 'absolute md:rounded-xl opacity-40 object-cover w-full h-56 md:m-auto') %>
         <div class="absolute bottom-5 left-5">
