@@ -1,20 +1,18 @@
-<div class="h-screen w-screen">
+<div class="w-screen h-screen">
   <div class="grid grid-cols-2 mb-5 border-b border-yellow-500">
-    <div class="col-span-2 justify-items-center m-auto bg-transparent w-100">
-        <h1 class="text-gray-700 text-4xl sm:text-1xl font-mono mt"><%= @power_rankings.first.year %> Power Rankings</h1>
+    <div class="col-span-2 m-auto bg-transparent justify-items-center w-100">
+        <h1 class="font-mono text-4xl text-gray-700 sm:text-1xl mt"><%= @power_rankings.first.year %> Power Rankings</h1>
     </div>
   </div>
   
-  <div class="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 space-x-4 rounded-r-md">
+  <div class="grid grid-cols-1 space-x-4 lg:grid-cols-4 md:grid-cols-4 rounded-r-md">
     <% @power_rankings.each_with_index do |pr, index| %>
-    <div class="<%= weeks_column(index: index) %> mb-5 bg-white rounded-lg border border-gray-100 shadow-md dark:bg-white dark:border-gray-100">
-      <%= link_to "/power_rankings/#{pr.id}" do %>
-          <%= image_tag(pr.pr_avatar, class: 'm-auto object-cover') %>
-          <div class="p-5">
-              <h5 class="align-baseline text-2xl sm:text-1xl tracking-tight text-black dark:text-black">Week: <%= pr.week %></h5>
-          </div>
-      <% end %>
-    </div>
+    <a href="<%= power_ranking_path(pr.id) %>" class="<%= weeks_column(index: index) %> relative w-full h-80 md:m-auto mb-10">
+      <%= image_tag(pr.pr_avatar, class: 'absolute md:rounded-xl opacity-80 object-cover w-full h-80 md:m-auto') %>
+      <div class="absolute -bottom-10 left-5 md:border-none">
+        <h2 class="font-bold border-b-black">Week: <%= pr.week %></h2>
+      </div>
+    </a>
     <% end %>
   </div>
 </div>
