@@ -1,6 +1,6 @@
 <%= form_for [@power_ranking, @ranking] do |form| %>
   <% if ranking.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
       <h2><%= pluralize(ranking.errors.count, "error") %> prohibited this ranking from being saved:</h2>
 
       <ul>
@@ -30,5 +30,6 @@
 
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= link_to "Back to Power Ranking", edit_power_ranking_path(@power_ranking.id), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 <% end %>
