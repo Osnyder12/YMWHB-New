@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/power_rankings/:year/weeks', to: 'power_rankings#weeks'
 
   get '/ymwhb/history', to: 'homes#history'
+  get 'ymwhb/past_champion', to: 'homes#past_champion'
 
   patch 'rankings/drag'
 
