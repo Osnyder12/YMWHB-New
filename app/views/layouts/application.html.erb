@@ -67,7 +67,7 @@
         </div>
       </div>
     </nav>
-    <div class="absolute z-10 hidden overflow-hidden font-normal divide-y divide-gray-100 rounded-b-sm shadow w-44 bg-slate-800" id="menu">
+    <div class="absolute z-10 hidden overflow-hidden font-normal bg-gray-800 divide-y divide-gray-100 rounded-b-sm shadow w-44" id="menu">
       <ul class="pt-4 text-base text-gray-700 sm:flex sm:justify-between sm:pt-0 sm:bg-gray-800">
         <li>
           <a href="/" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
@@ -86,7 +86,7 @@
         <% if @current_user.present? %>
         <% if @current_user.pr_editor || %w[admin super_admin].include?(@current_user.role) %>
         <li>
-          <a href="/power_rankings/new" class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Create New PR</a>
+          <a href="/power_rankings/new" class="px-3 py-4 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Create New PR</a>
         </li>
         <% end %>
         <% end %>
