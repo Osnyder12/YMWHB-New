@@ -1,8 +1,4 @@
 module PowerRankingsHelper
-  def edit_label(power_ranking)
-    power_ranking.rankings.empty? ? 'Add Rankings' : 'Edit Rankings'
-  end
-
   def background_color(action:)
     action == 'new' ? 'bg-white-200' : 'bg-gray-200'
   end
