@@ -42,7 +42,7 @@
           <% end %>
           <div class="flex flex-col justify-between p-4 leading-normal">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black"><%= ranking.position %>: <%= ranking.team.team_name%></h5>
-              <p class="mb-3 font-normal text-black break-all dark:text-black"><%= sanitize(ranking.description) %></p>
+              <p class="mb-3 font-normal text-black dark:text-black"><%= sanitize(ranking.description) %></p>
           </div>
         </div>
     <% end %>
