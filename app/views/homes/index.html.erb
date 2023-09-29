@@ -15,7 +15,7 @@
       <a href="<%= power_ranking_path(@power_ranking.id) %>" class="relative w-full h-56 col-span-1 md:m-auto">
         <%= image_tag('generic-football.png', class: 'absolute md:rounded-xl opacity-40 object-cover w-full h-56 md:m-auto') %>
         <div class="absolute bottom-5 left-5">
-          <h2 class="font-bold">Week 1 Power Rankings</h2>
+          <h2 class="font-bold">Week <%= @power_ranking.week %> Power Rankings</h2>
           <p>2023</p>
         </div>
       </a>
