@@ -1,6 +1,6 @@
 <%= form_for power_ranking, class: "contents w-full max-w-lg", html: {multipart: true} do |form| %>
   <% if power_ranking.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
       <h2><%= pluralize(power_ranking.errors.count, "error") %> prohibited this power_ranking from being saved:</h2>
 
       <ul>
@@ -12,43 +12,48 @@
   <% end %>
 
 
-  <div class="flex flex-wrap -mx-3 mb-6 mt-5">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+  <div class="flex flex-wrap mt-5 mb-6 -mx-3">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :week, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :week, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
                                      value: power_ranking.persisted? ? power_ranking.week : @last_weeks_pr_week, disabled: params['action'] != 'new' %>
       </div>
     
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :year, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
                                      value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr_year, disabled: params['action'] != 'new' %>
       </div>
 
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :title, 'Title (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.text_field :title, class: "appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
                                     value: power_ranking.nil? ? "" : power_ranking.title %>
       </div>
 
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :introduction_paragraph, 'Introduction Paragraph (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.text_area :introduction_paragraph, class: "appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
                                                     value: power_ranking.nil? ? "" : power_ranking.introduction_paragraph %>
       </div>
 
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <%= form.label :avatar, 'Main Image (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
-        <%= form.file_field :avatar %>
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+        <%= form.label :type, 'Type', class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
+        <%= form.select :type, options_for_select(PowerRanking::TYPES_HASH), class: 'appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
       </div>
 
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 object-bottom">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+        <%= form.label :avatar, 'Main Image (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+        <%= form.file_field :avatar, class: 'appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+      </div>
+
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :published, 'Publish' %>
         <%= form.check_box :published, class: "w-4 h-4 text-gray-700 bg-gray-200 border-gray-300 focus:ring-blue-500" %>
       </div>
   </div>
   <div>
-    <button type="submit" class="grid justify-items-center w-1/4 py-2 px-4 border border-transparent text-sm font-medium rounded-md mb-2 text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+    <button type="submit" class="grid w-1/4 px-4 py-2 mb-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md justify-items-center hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
       <% if params[:action] == 'new' %>Save & Add Rankings <% else %>Save<% end %>
     </button>
   </div>

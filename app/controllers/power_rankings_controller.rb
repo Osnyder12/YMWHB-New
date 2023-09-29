@@ -31,6 +31,7 @@ class PowerRankingsController < ApplicationController
   def edit; end
 
   def create
+    binding.pry
     @power_ranking = PowerRanking.new(power_ranking_params)
 
     @power_ranking.user_id = current_user&.id
@@ -109,7 +110,7 @@ class PowerRankingsController < ApplicationController
     end
 
     def power_ranking_params
-      params.require(:power_ranking).permit(:id, :week, :year, :title, :introduction_paragraph, :avatar, :published)
+      params.require(:power_ranking).permit(:id, :week, :year, :title, :introduction_paragraph, :type, :avatar, :published)
     end
 
     def set_rankings

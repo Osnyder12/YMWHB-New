@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_123454) do
     t.string "title"
     t.string "introduction_paragraph"
     t.boolean "published", default: false
-    t.string "type"
+    t.string "type", default: "PowerRanking::FullRanking", null: false
     t.index ["user_id"], name: "index_power_rankings_on_user_id"
     t.index ["week", "year", "user_id"], name: "power_rankings_index", unique: true
   end
