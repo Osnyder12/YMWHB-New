@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  
+  <% if notice.present? && notice.include?('already exists') %>
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
+      <p><%= notice %></p>
+    </div>
+  <% end %>
 
   <% unless params[:action] == 'edit' %>
   <div class="my-5">

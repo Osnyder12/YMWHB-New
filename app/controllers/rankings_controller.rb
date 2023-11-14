@@ -2,6 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class RankingsController < ApplicationController
   before_action :set_ranking, only: %i[ show edit update destroy ]
+  before_action :set_team_name, only: %i[ create ]
   before_action :set_power_ranking, except: :drag
 
   # GET /rankings or /rankings.json
@@ -48,6 +49,10 @@ class RankingsController < ApplicationController
         format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity }
         format.json { render json: @ranking.errors, status: :unprocessable_entity }
       end
+
+    rescue ActiveRecord::RecordNotUnique => e
+      format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity, notice: "Ranking for #{@team_name} already exists in this PR."}
+      format.json { render json: @ranking.errors, status: :unprocessable_entity }
     end
   end
 
@@ -89,6 +94,10 @@ class RankingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_ranking
       @ranking = Ranking.find_by(id: params[:id])
+    end
+
+    def set_team_name
+      @team_name = Team.find_by(id: ranking_params[:team_id]).team_name
     end
 
     # Only allow a list of trusted parameters through.
