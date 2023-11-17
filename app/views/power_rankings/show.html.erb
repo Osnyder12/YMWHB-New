@@ -35,16 +35,10 @@
   </div>
 
   <div class="grid w-full grid-cols-1 mb-10 rounded-r-md">
-    <% @rankings.each do |ranking| %>
-        <div class="flex flex-col items-center w-full mt-10 bg-white border rounded-lg shadow-md md:flex-row dark:border-slate-200 dark:bg-white">
-          <% if ranking.avatar.url.present? %>
-            <%= image_tag(ranking.avatar.url, class: 'object-cover w-full h-full rounded-t-lg md:w-48 md:rounded-none md:rounded-l-lg') %>
-          <% end %>
-          <div class="flex flex-col justify-between p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-black dark:to-black"><%= ranking.position %>: <%= ranking.team.team_name%></h5>
-              <p class="mb-3 font-normal text-black dark:text-black"><%= sanitize(ranking.description) %></p>
-          </div>
-        </div>
+    <% if @power_ranking.type == 'PowerRanking::FullRanking' %>
+      <%= render "full_ranking", rankings: @rankings %>
+    <% else %>
+      <%= render "three_by_three", rankings: @rankings %>
     <% end %>
   </div>
 </div>

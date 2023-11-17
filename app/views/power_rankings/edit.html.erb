@@ -1,11 +1,12 @@
-<% dragActions = "dragstart->drag#dragStart dragover->drag#dragOver dragenter->drag#dragEnter drop->drag#drop dragend->drag#dragEnd" %>
-
 <div class="w-full mx-auto md:w-2/3">
   <h1 class="text-4xl font-bold">Editing Week <%= @power_ranking.week %> Power Ranking</h1>
 
   <%= render "form", power_ranking: @power_ranking %>
 
-  <%= link_to 'Add New Ranking', new_power_ranking_ranking_path(@power_ranking), class: "mb-5 rounded-lg py-3 px-5 bg-yellow-300 hover:bg-yellow-700 inline-block font-medium" %>
+
+  <% unless @power_ranking.type == 'PowerRanking::ThreeByThree' && @rankings.length >= 6 %>
+    <%= link_to 'Add New Ranking', new_power_ranking_ranking_path(@power_ranking), class: "mb-5 rounded-lg py-3 px-5 bg-yellow-300 hover:bg-yellow-700 inline-block font-medium" %>
+  <% end %>
   <%= link_to "View Power Ranking", power_ranking_path, class: "mb-5 rounded-lg py-3 px-5 bg-blue-300 hover:bg-blue-700 inline-block font-medium" %>
 
 
@@ -19,9 +20,9 @@
     </div>
 
     <% if @power_ranking.type == 'PowerRanking::FullRanking' %>
-      <%= render "full_ranking", rankings: @rankings, power_ranking: @power_ranking %>
+      <%= render "full_ranking_form", rankings: @rankings, power_ranking: @power_ranking %>
     <% else %>
-      <%= render "three_by_three", rankings: @rankings, power_ranking: @power_ranking %>
+      <%= render "three_by_three_form", rankings: @rankings, power_ranking: @power_ranking %>
     <% end %>
 
   </div>
