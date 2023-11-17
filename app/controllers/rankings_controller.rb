@@ -4,6 +4,7 @@ class RankingsController < ApplicationController
   before_action :set_ranking, only: %i[ show edit update destroy ]
   before_action :set_team_name, only: %i[ create ]
   before_action :set_power_ranking, except: :drag
+  before_action :set_teams, only: %i[new create]
 
   # GET /rankings or /rankings.json
   def index
@@ -17,7 +18,6 @@ class RankingsController < ApplicationController
   # GET /rankings/new
   def new
     @ranking = Ranking.new
-    @teams = Team.all.order(team_name: :desc)
   end
 
   # GET /rankings/1/edit
@@ -26,7 +26,6 @@ class RankingsController < ApplicationController
 
   # POST /rankings or /rankings.json
   def create
-    @teams = Team.all.order(team_name: :desc)
     @ranking = Ranking.new(ranking_params)
     @ranking.user = current_user
     @ranking.rankable = @power_ranking
@@ -95,6 +94,10 @@ class RankingsController < ApplicationController
 
     def set_team_name
       @team_name = Team.find_by(id: ranking_params[:team_id]).team_name
+    end
+
+    def set_teams
+      @teams = Team.all.order(team_name: :desc)
     end
 
     # Only allow a list of trusted parameters through.
