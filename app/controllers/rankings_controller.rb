@@ -26,6 +26,7 @@ class RankingsController < ApplicationController
 
   # POST /rankings or /rankings.json
   def create
+    @teams = Team.all.order(team_name: :desc)
     @ranking = Ranking.new(ranking_params)
     @ranking.user = current_user
     @ranking.rankable = @power_ranking
@@ -46,13 +47,9 @@ class RankingsController < ApplicationController
         format.html { redirect_to edit_power_ranking_url(@power_ranking), notice: "Ranking was successfully created." }
         format.json { render :show, status: :created, location: @ranking }
       else
-        format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ranking.errors, status: :unprocessable_entity }
       end
-
-    rescue ActiveRecord::RecordNotUnique => e
-      format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity, notice: "Ranking for #{@team_name} already exists in this PR."}
-      format.json { render json: @ranking.errors, status: :unprocessable_entity }
     end
   end
 

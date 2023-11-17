@@ -1,7 +1,6 @@
 <%= form_for power_ranking, class: "contents w-full max-w-lg", html: {multipart: true} do |form| %>
   <% if power_ranking.errors.any? %>
     <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
-      <h2><%= pluralize(power_ranking.errors.count, "error") %> prohibited this power_ranking from being saved:</h2>
 
       <ul>
         <% power_ranking.errors.each do |error| %>
@@ -22,7 +21,7 @@
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :year, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
         <%= form.number_field :year, class: "appearance-none block w-full #{background_color(action: params['action'])} text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
-                                     value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr_year, disabled: params['action'] != 'new' %>
+                                     value: power_ranking.persisted? ? power_ranking.year : @last_weeks_pr_year, disabled: ['create', 'new'].exclude?(params['action']) %>
       </div>
 
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
@@ -37,11 +36,10 @@
                                                     value: power_ranking.nil? ? "" : power_ranking.introduction_paragraph %>
       </div>
 
-      <!-- <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+      <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :type, 'Type', class: 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' %>
         <%= form.select :type, options_for_select(PowerRanking::TYPES_HASH), class: 'appearance-none block w-full bg-white-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
-      </div> -->
-
+      </div>
 
       <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
         <%= form.label :avatar, 'Main Image (Optional)', class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>

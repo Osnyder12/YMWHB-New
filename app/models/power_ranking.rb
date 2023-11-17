@@ -5,6 +5,8 @@ class PowerRanking < ApplicationRecord
   has_many :rankings, as: :rankable, dependent: :destroy_async
   mount_uploader :avatar, AvatarUploader
 
+  validates :week, uniqueness: { scope: [:user_id, :year]}
+
   TYPES = ['Full List', 'Three By Three']
 
   TYPES_HASH = { 'Full List': 'PowerRanking::FullRanking', 'Three By Three': 'PowerRanking::ThreeByThree' }
