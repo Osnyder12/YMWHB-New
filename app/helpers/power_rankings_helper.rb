@@ -1,6 +1,6 @@
 module PowerRankingsHelper
   def background_color(action:)
-    action == 'new' ? 'bg-white-200' : 'bg-gray-200'
+    ['create', 'new'].include?(action) ? 'bg-white-200' : 'bg-gray-200'
   end
 
   def weeks_column(index:)

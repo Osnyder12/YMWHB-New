@@ -4,6 +4,7 @@ class PowerRankingsController < ApplicationController
   before_action :set_power_ranking, only: %i[ show edit update destroy ]
   before_action :set_rankings, only: %i[ edit show ]
   before_action :authorize, only: %i[ new edit ]
+  before_action :set_last_week_and_year, only: %i[new create]
 
   def index
     @power_rankings = PowerRanking.all.order(week: :desc)
@@ -20,11 +21,6 @@ class PowerRankingsController < ApplicationController
   end
 
   def new
-    last_weeks_pr = PowerRanking.where(year: Date.today.year).last
-
-    @last_weeks_pr_year = @last_weeks_pr.present? ? @last_weeks_pr.year : Date.today.year
-    @last_weeks_pr_week = @last_weeks_pr.present? ? @last_weeks_pr&.week + 1 : 1
-
     @power_ranking = PowerRanking.new
   end
 
@@ -106,6 +102,13 @@ class PowerRankingsController < ApplicationController
 
     def set_power_ranking
       @power_ranking = PowerRanking.find(params[:id])
+    end
+
+    def set_last_week_and_year
+      last_weeks_pr = PowerRanking.where(year: Date.today.year).last
+
+      @last_weeks_pr_year = last_weeks_pr.present? ? last_weeks_pr.year : Date.today.year
+      @last_weeks_pr_week = last_weeks_pr.present? ? last_weeks_pr&.week + 1 : 1
     end
 
     def power_ranking_params
