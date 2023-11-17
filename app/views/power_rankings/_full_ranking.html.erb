@@ -1,0 +1,34 @@
+<ul>
+  <div id="rankings">
+  <% rankings.each do |ranking| %>
+      <%= content_tag(:div, class: 'bi bi-grip-vertical draggable', draggable: true, data: {
+        controller: "drag",
+        action: dragActions,
+        resource_id: ranking.id,
+        url: "/rankings/drag",
+        parent: "rankings",
+      }) do %>
+      <div id="<%= dom_id ranking %>">
+        <li class="flex mb-6 border-b border-yellow-500 h-fit">
+          <div class="w-full mr-10">
+            <% if ranking.avatar.present? %>
+            <%= image_tag ranking.avatar.url,
+                class: 'object-fill mb-2' %>
+              <% end %>
+              <div class="flex space-x-2">
+                <%= button_to "Delete", "/power_rankings/#{power_ranking.id}/rankings/#{ranking.id}", method: :delete, class: "mb-3 bg-red-600 hover:bg-red-700 text-black-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+                <%= link_to "Edit", edit_power_ranking_ranking_path(power_ranking.id, ranking.id), method: :get, class: "bg-yellow-300 hover:bg-yellow-700 mb-3 text-black-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+              </div>
+          </div>
+          <div>
+            <h2 class="mb-3 text-lg font-bold"><%= ranking.position %>: <%= ranking.team.team_name %></h2>
+            <p class="break-all">
+              <%= sanitize(ranking.description) %>
+            </p>
+          </div>
+        </li>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</ul>
