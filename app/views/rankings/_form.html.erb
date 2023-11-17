@@ -1,7 +1,6 @@
 <%= form_for [@power_ranking, @ranking] do |form| %>
   <% if ranking.errors.any? %>
     <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
-      <h2><%= pluralize(ranking.errors.count, "error") %> prohibited this ranking from being saved:</h2>
 
       <ul>
         <% ranking.errors.each do |error| %>
@@ -10,17 +9,11 @@
       </ul>
     </div>
   <% end %>
-  
-  <% if notice.present? && notice.include?('already exists') %>
-    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
-      <p><%= notice %></p>
-    </div>
-  <% end %>
 
   <% unless params[:action] == 'edit' %>
   <div class="my-5">
       <%= form.label :team_name %>
-      <%= form.collection_select :team_id, @teams, :id, :team_name %>
+      <%= form.collection_select :team_id, teams, :id, :team_name %>
   </div>
   <% end %>
 

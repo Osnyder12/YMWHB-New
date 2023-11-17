@@ -4,6 +4,7 @@ class RankingsController < ApplicationController
   before_action :set_ranking, only: %i[ show edit update destroy ]
   before_action :set_team_name, only: %i[ create ]
   before_action :set_power_ranking, except: :drag
+  before_action :set_teams, only: %i[new create]
 
   # GET /rankings or /rankings.json
   def index
@@ -17,7 +18,6 @@ class RankingsController < ApplicationController
   # GET /rankings/new
   def new
     @ranking = Ranking.new
-    @teams = Team.all.order(team_name: :desc)
   end
 
   # GET /rankings/1/edit
@@ -46,13 +46,9 @@ class RankingsController < ApplicationController
         format.html { redirect_to edit_power_ranking_url(@power_ranking), notice: "Ranking was successfully created." }
         format.json { render :show, status: :created, location: @ranking }
       else
-        format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @ranking.errors, status: :unprocessable_entity }
       end
-
-    rescue ActiveRecord::RecordNotUnique => e
-      format.html { redirect_to new_power_ranking_ranking_path, status: :unprocessable_entity, notice: "Ranking for #{@team_name} already exists in this PR."}
-      format.json { render json: @ranking.errors, status: :unprocessable_entity }
     end
   end
 
@@ -98,6 +94,10 @@ class RankingsController < ApplicationController
 
     def set_team_name
       @team_name = Team.find_by(id: ranking_params[:team_id]).team_name
+    end
+
+    def set_teams
+      @teams = Team.all.order(team_name: :desc)
     end
 
     # Only allow a list of trusted parameters through.

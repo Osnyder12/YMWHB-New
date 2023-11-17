@@ -4,4 +4,6 @@ class Ranking < ApplicationRecord
   belongs_to :user
   belongs_to :team
   mount_uploader :avatar, AvatarUploader
+
+  validates :team_id, uniqueness: { scope: [:rankable_id, :rankable_type]}
 end
